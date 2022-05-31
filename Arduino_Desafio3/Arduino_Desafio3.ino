@@ -24,6 +24,18 @@ void loop() {
   //valor_pot = map(analogRead(pot1),0,1023,0,255);
   //Serial.println(valor_pot);
   v_b01 = digitalRead(b01);
-  delay(100);
+  v_b02 = digitalRead(b02);
+
+  v_b03 = digitalRead(b03);
+  v_b04 = digitalRead(b04);
+  
+  delay(800);
+  Serial.print("Botao 1: ");
   Serial.println(v_b01);
+  Serial.print("Botao 2: ");
+  Serial.println(v_b02);
+  Serial.print("Botao 3: ");
+  Serial.println(v_b03);
+  Serial.print("Botao 4: ");
+  Serial.println(v_b04);
 }
