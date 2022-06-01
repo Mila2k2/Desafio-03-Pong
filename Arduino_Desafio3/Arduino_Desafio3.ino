@@ -1,11 +1,13 @@
 const int pot1 = A5;
+const int pot2 = A4;
 
 const int b01 = 9;
 const int b02 = 8;
 const int b03 = 7;
 const int b04 = 6;
 
-float valor_pot = 0;
+float valor_pot1 = 0;
+float valor_pot2 = 0;
 
 bool v_b01;
 bool v_b02;
@@ -21,8 +23,14 @@ void setup() {
 }
 
 void loop() {
-  //valor_pot = map(analogRead(pot1),0,1023,0,255);
-  //Serial.println(valor_pot);
+  valor_pot1 = map(analogRead(pot1),0,1023,0,255);
+  Serial.print("Potenciometro 1: ");
+  Serial.println(valor_pot1);
+  
+  valor_pot2 = map(analogRead(pot2),0,1023,0,255);
+  Serial.print("Potenciometro 2: ");
+  Serial.println(valor_pot2);
+  
   v_b01 = digitalRead(b01);
   v_b02 = digitalRead(b02);
 
