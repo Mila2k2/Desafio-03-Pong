@@ -10,18 +10,16 @@ void draw(){
   
   rect(10, p1, 18, 220, 28);
   rect(1052, p2, 18, 220, 28);
-  
 }
 
-void keyPressed() {
-  if (key == CODED) {
+void keyPressed() { //Barras não sincronizadas devido a essa função so pegar uma tecla por vez
     if (keyCode == UP && p1 > 0) {
       p1 = p1 - 8;
     } else if (keyCode == DOWN && p1 < (height - 224)) {
       p1 = p1 + 8;
-    } 
-  }
-    if(key == 'w' && p2 > 0){
+    }
+    
+     if(key == 'w' && p2 > 0){
        p2 = p2 - 8;
     } else if(key == 's' && p2 < (height - 224)){
       p2 = p2 + 8;
