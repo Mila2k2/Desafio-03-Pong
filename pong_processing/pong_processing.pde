@@ -2,9 +2,11 @@ float p1 = 0, p2 = 0;
 float x = 0, y = 0;
 int pont1 = 0, pont2 = 0;
 int v_b = 8; //Velocidade das barras
+bol b;
 
 void setup(){
   size(1080,720); //Tamanho da tela
+  b = new bol();
 }
 
 void draw(){
