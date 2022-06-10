@@ -46,4 +46,8 @@ void dinamico(){
   
   rect(6, p1, 14, 200, 28); 
   rect((width - 16 - 6), p2, 14, 200, 28);
+  
+  b.display();
+  b.move();
+  b.checkp();
 }
