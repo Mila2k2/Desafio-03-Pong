@@ -15,29 +15,27 @@ void draw(){
 
 void keyPressed() { //Barras não sincronizadas devido a essa função so pegar uma tecla por vez
     if (keyCode == UP && p1 > 0) {
-      p1 = p1 - v_b;
+      p1 -= v_b;
     } else if (keyCode == DOWN && p1 < (height - 200)) {
-      p1 = p1 + v_b;
+      p1 += v_b;
     }
     
      if(key == 'w' && p2 > 0){
-       p2 = p2 - v_b;
+      p2 -= v_b;
     } else if(key == 's' && p2 < (height - 200)){
-      p2 = p2 + v_b;
+      p2 += v_b;
     }
 }
 
 void meio(){
   for (int i = 5; i < 686; i = i + 20) {
     rect(540, i, 2, 35);
-    i = i + 20;
+    i += 20;
   }
 }
 
 void dinamico(){
   background(180,0,0); // Cor do fundo
-  
-  //ellipse(x, y, 30, 30);
   meio();
   
   textSize(100);
@@ -49,5 +47,6 @@ void dinamico(){
   
   b.display();
   b.move();
-  b.checkp();
+  b.checkb();
+  b.checkpont();
 }
