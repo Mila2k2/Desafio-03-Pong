@@ -3,7 +3,7 @@ int velocidade2 = 2;
 int placar_ld = 0;
 int placar_le = 0;
 int vencedor = 0;
-PFont f;
+PFont k; // classificação da variavel k como fonte
 
 void setup(){
   fullScreen(); //Tamanho da tela
@@ -11,9 +11,9 @@ void setup(){
   velocide1 = 3;
   velocidade2 = 2;
   placar_le = vencedor; // definindo os vencedores na mão, já que não tenho o jogo rodando
-  printArray(PFont.list());
-  f = createFont("Perpetua Itálico", 24);
- textFont(f);
+  printArray(PFont.list()); // definindo a fonte das letras
+  k = createFont("Perpetua Itálico", 24);
+ textFont(k);
   
 }
 
