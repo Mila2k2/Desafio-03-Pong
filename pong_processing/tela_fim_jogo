@@ -1,0 +1,59 @@
+int velocide1 = 3;
+int velocidade2 = 2;
+int placar_ld = 0;
+int placar_le = 0;
+int vencedor = 0;
+PFont f;
+
+void setup(){
+  fullScreen(); //Tamanho da tela
+  textAlign(CENTER, CENTER); // definindo o textos sempre no centro da tela 
+  velocide1 = 3;
+  velocidade2 = 2;
+  placar_le = vencedor; // definindo os vencedores na mão, já que não tenho o jogo rodando
+  printArray(PFont.list());
+  f = createFont("Perpetua Itálico", 24);
+ textFont(f);
+  
+}
+
+void draw(){
+  fim_jogo();
+}
+
+void fim_jogo(){ // função de fim de jogo
+  textSize(height/10);
+  
+  if (placar_ld == vencedor){ //definindo venncedor como lado direito
+    fill (0,255,0);
+    tela_venc("Lado direito é o vencedor!!!!!!!!");
+   }
+   
+   if(placar_le == vencedor){ //definindo venncedor como lado esquerdo
+     fill (0,255,0);
+    tela_venc("Lado esquerdo é o vencedor!!!!!!!!"); 
+   }
+}
+
+void tela_venc (String text) {//tela de vencedor
+//tem que congelar o jogo, joga a função e iguala a 0, logo as velocidades são = 0
+  velocide1 = 0;
+  velocidade2 = 0;
+
+  background(180,0,0);
+  fill(255); // definindo a cor das letras como brancas
+  text("Fim de jogo", width/2, height/3 -200);
+  text ("click para jogar novamente", width/2, height/3 +200);
+  fill(0,255,0); // definindo a cor das letras como verde
+  text(text, width/2, height/3); // definindo o texto do vencedor
+  
+  if(mousePressed){
+    // placar_ld = placar do lado direito
+  // placar_le = placar do lado esquerdo
+  // como o jogo reiniciou, as velocidades voltam ao normal
+    placar_ld = 0;
+    placar_le = 0;
+    velocide1 = 3;
+    velocidade2 = 2;}
+    
+} 
