@@ -14,19 +14,26 @@ class bol{
   }
   
   void move(){
-    x = x + xspeed;
-    y = y + yspeed;
+    x += xspeed;
+    y += yspeed;
   }
   
-  void checkp(){
-    
+  void checkb(){
     if (x > width || x < 0){
       xspeed = xspeed * (-1);
     }
     if (y > height || y < 0){
       yspeed = yspeed * (-1);
-    }
-      
+    }   
   } 
+  
+  void checkpont(){
+    if(x == 0){
+     pont1 += 1;
+    }
+    if(x == width){
+     pont2 += 1;
+    }
+  }
   
 }
