@@ -1,0 +1,43 @@
+int velocide1 = 3;
+int velocidade2 = 2;
+PFont k;
+int b_pause = 1; // botão de pause
+
+void setup(){
+  fullScreen(); //Tamanho da tela
+  textAlign(CENTER, CENTER); // definindo o textos sempre no centro da tela 
+  velocide1 = 3;
+  velocidade2 = 2;
+  printArray(PFont.list());
+  k = createFont("Perpetua Itálico", 24);
+ textFont(k);
+  
+}
+
+void draw(){
+ tela_pause();
+}
+
+
+
+void tela_pause(){
+  
+  if (b_pause == 1){
+  //tem que congelar o jogo, por isso iguala a variavel a 0, logo as velocidades são = 0
+  velocide1 = 0;
+  velocidade2 = 0;
+  
+  background(180,0,0);
+  textSize(height/5); // tamanho da letra
+  text("PAUSE", width/2, height/3 -200);
+  textSize(height/15);
+  text ("click para retornar", width/2, height/3 +200);
+
+   if (mousePressed){
+   velocide1 = 3;
+   velocidade2 = 2;
+   b_pause = 0;
+   
+   }}
+
+}
