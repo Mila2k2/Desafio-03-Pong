@@ -36,7 +36,7 @@ void fim_jogo(){ // função de fim de jogo
 }
 
 void tela_venc (String text) {//tela de vencedor
-//tem que congelar o jogo, joga a função e iguala a 0, logo as velocidades são = 0
+//tem que congelar o jogo, por isso iguala a variavel a 0, logo as velocidades são = 0
   velocide1 = 0;
   velocidade2 = 0;
 
