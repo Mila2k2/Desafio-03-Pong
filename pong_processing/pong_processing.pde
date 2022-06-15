@@ -10,8 +10,8 @@ int pontc1 = 0, pontc2 = 0;
 
 
 void setup(){
-  //size(1080,720); //Tamanho da tela
-  fullScreen(); // Tamanho preenchendo a tela
+  size(1080,720); //Tamanho da tela
+  //fullScreen(); // Tamanho preenchendo a tela
   textAlign(CENTER, CENTER); //  Alianhmento do texto
   b = new bol(); // Inicia o objeto bola
 }
@@ -70,7 +70,6 @@ void dinamico(){ // Tela das movimentações principais do jogo
   b.move();
   b.checkb();
   b.checkpont();
-   println(pontc1, " - ",pontc2);
   pontc1 = pont1 / 2; // Corrige a duplicação da pontuação
   pontc2 = pont2 / 2;
   
@@ -131,7 +130,18 @@ void tela_inicial(){ // Primeira tela
    textSize(height/10);
    fill(255); // definindo a cor das letras como brancas
    text("POOng", width/2, height/3 -200); // Textos finais
+   text ("Jogar", width/2, height/3 +200);
    
+    
+   rectMode(RADIUS);  
+   fill(180,180, 0);  
+   rect( width/2, height/2.8 +200, 150, 60);  
+   textAlign(CENTER, CENTER); 
+   textSize(height/10);
+   fill(0);  // Set fill to gray
+   text ("Jogar", width/2, height/3 +200);      
+    
+    
    if(mousePressed){ // Caso pressione o mouse o jogo comeca
      ordem = 1;
    }  
