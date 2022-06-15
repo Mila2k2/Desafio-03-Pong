@@ -2,10 +2,12 @@ float p1 = 0, p2 = 0; // Posição das barras, eixo y
 float x = 0, y = 0; // Posicao da bolinha
 int pont1 = 0, pont2 = 0; // Pontuação dos jogadores
 int v_b = 8; //Velocidade das barras
-bol b; // Objeto bola
 int ordem = 0; // Chamada das telas
 String ganhou = ""; // Nome do jogador que ganhou (numero 1/ numero 2)
-int vencedor = 1; // Quantidades de pontos para vencer/perder
+int vencedor = 3; // Quantidades de pontos para vencer/perder
+bol b; // Objeto bola
+int pontc1 = 0, pontc2 = 0;
+
 
 void setup(){
   //size(1080,720); //Tamanho da tela
@@ -17,16 +19,18 @@ void setup(){
 void draw(){ // main
   switch (ordem){ // Ordena as cenas do jogo
     case 0:
-      dinamico();
+      tela_inicial();
       break;
     case 1:
-      fim_jogo();
+      dinamico();
       break;
     case 2:
       tela_pause();
       break;
+    case 3:
+      fim_jogo();
+      break;
   }
-  
 }
 
 void keyPressed() { // Move as barras com um limite inferior e superior
@@ -56,8 +60,8 @@ void dinamico(){ // Tela das movimentações principais do jogo
   meio(); // Desenha traços do meio
   fill(255); 
   textSize(100);
-  text(pont1/2, width/4, 100); // Mostra as pontuacoes alinhadas
-  text(pont2/2, width - (width/4), 100);
+  text(pontc1, width/4, 100); // Mostra as pontuacoes alinhadas
+  text(pontc2, width - (width/4), 100);
   
   rect(6, p1, 14, 200, 28); // Desenha os retângulos certinho
   rect((width - 16 - 6), p2, 14, 200, 28);
@@ -66,11 +70,14 @@ void dinamico(){ // Tela das movimentações principais do jogo
   b.move();
   b.checkb();
   b.checkpont();
+   println(pontc1, " - ",pontc2);
+  pontc1 = pont1 / 2; // Corrige a duplicação da pontuação
+  pontc2 = pont2 / 2;
   
-  if (pont1 == vencedor || pont2 == vencedor){ //Analisando se o jogo acabou para acionar tela de fim
+  if (pontc1 == vencedor || pontc2 == vencedor){ //Analisando se o jogo acabou para acionar tela de fim
     fim_jogo();
    }  
-   if (keyPressed){ //Definindo vencedor como lado direito
+   if (keyPressed){ //Aciona o pause apertando a tecla b
     if(key == 'b'){
        tela_pause();
     }
@@ -93,12 +100,14 @@ void fim_jogo(){ // função de fim de jogo
     fill(0,255,0); // definindo a cor das letras como verde
     text(ganhou, width/2, height/3); // definindo o texto do vencedor
   
+  
     if(mousePressed){ // Clicando com o mouse reinicia as variáveis do jogo
       pont1 = 0;
       pont2 = 0;
       v_b = 8;
     }
-  ordem = 1; // Mantem a tela final ativa
+    
+    ordem = 3; // Mantem a tela final ativa
 }
 
 void tela_pause(){ // Tela de pause do jogo
@@ -109,11 +118,21 @@ void tela_pause(){ // Tela de pause do jogo
   text("PAUSE", width/2, height/3 -200); // Textos de pause
   textSize(height/15);
   text ("click para retornar", width/2, height/3 +200);
-
+  
   if (mousePressed){ // é para no futuro retomar o jogo
      v_b = 8;
   }
- ordem = 2;
+  ordem = 2;
 
 }
 
+void tela_inicial(){ // Primeira tela
+   background(200,0,0);
+   textSize(height/10);
+   fill(255); // definindo a cor das letras como brancas
+   text("POOng", width/2, height/3 -200); // Textos finais
+   
+   if(mousePressed){ // Caso pressione o mouse o jogo comeca
+     ordem = 1;
+   }  
+}
