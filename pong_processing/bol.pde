@@ -1,24 +1,24 @@
-class bol{
+class bol{ // Classe da bola
   
-  float x, y;
-  float xspeed = 5, yspeed = 2.3;
+  float x, y; // Posicao da bola
+  float xspeed = 5, yspeed = 2.3; //  Velocidade da bola
   
-  bol(){
+  bol(){ // Definições iniciais
     x = 0;
     y = 0;
   }
   
-  void display(){
+  void display(){ // Desenha a bola
     stroke(0);
     ellipse(x, y, 28, 28);
   }
   
-  void move(){
+  void move(){ // Move a bola
     x += xspeed;
     y += yspeed;
   }
   
-  void checkb(){
+  void checkb(){ // Checa se bateu em algum lugar
     if (x > width || x < 0){
       xspeed = xspeed * (-1);
     }
@@ -27,7 +27,7 @@ class bol{
     }   
   } 
   
-  void checkpont(){
+  void checkpont(){ // Aumenta a pontuação dos jogadores
     if(x == 0){
      pont1 += 1;
     }
