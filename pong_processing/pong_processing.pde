@@ -2,26 +2,31 @@ float p1 = 0, p2 = 0;
 float x = 0, y = 0;
 int pont1 = 0, pont2 = 0;
 int v_b = 8; //Velocidade das barras
-int velocide1 = 3;
-int velocidade2 = 2;
-int placar_ld = 0;
-int placar_le = 0;
-int vencedor = 0;
-PFont k; // classificação da variavel k como fonte
-int b_pause = 0; // botão que pausa o jogo = 1, para simular o pause 
 bol b;
+int ordem = 0;
+String ganhou = "";
+int vencedor = 1;
 
 void setup(){
-  fullScreen(); //Tamanho da tela
-  textAlign(CENTER, CENTER); // definindo o textos sempre no centro da tela 
-  velocide1 = 3;
-  velocidade2 = 2;
-  printArray(PFont.list());
-  k = createFont("Perpetua Itálico", 24);
+  //size(1080,720); //Tamanho da tela
+  fullScreen();
+  textAlign(CENTER, CENTER);
+  b = new bol();
 }
 
 void draw(){
-  dinamico();
+  switch (ordem){
+    case 0:
+      dinamico();
+      break;
+    case 1:
+      fim_jogo();
+      break;
+    case 2:
+      tela_pause();
+      break;
+  }
+  
 }
 
 void keyPressed() { //Barras não sincronizadas devido a essa função so pegar uma tecla por vez
@@ -39,20 +44,20 @@ void keyPressed() { //Barras não sincronizadas devido a essa função so pegar 
 }
 
 void meio(){
-  for (int i = 5; i < 686; i = i + 20) {
-    rect(540, i, 2, 35);
-    i += 20;
+  for (int i = 0; i < height; i = i + 20) {
+    fill(255);
+    rect(width/2, i, 2, 35);
+    i += 35;
   }
 }
 
 void dinamico(){
   background(180,0,0); // Cor do fundo
   meio();
-  tela_pause();
-  
+  fill(255);
   textSize(100);
-  text(pont1, 270, 100);
-  text(pont2, 810, 100);
+  text(pont1/2, width/4, 100);
+  text(pont2/2, width - (width/4), 100);
   
   rect(6, p1, 14, 200, 28); 
   rect((width - 16 - 6), p2, 14, 200, 28);
@@ -62,66 +67,54 @@ void dinamico(){
   b.checkb();
   b.checkpont();
   
-  //fim_jogo(); // quando definir a função de pontos do pong, colocar a função fim de jogo dentro de um if
+  if (pont1 == vencedor || pont2 == vencedor){ //definindo venncedor como lado direito
+    fim_jogo();
+   }  
+   if (keyPressed){ //definindo venncedor como lado direito
+    if(key == 'b'){
+       tela_pause();
+    }
+  } 
+}
+
+void fim_jogo(){ // função de fim de jogo
+  textSize(height/10);
+  if (pont1 == vencedor){ //definindo venncedor como lado direito
+    fill (0,255,0);
+    ganhou = "Lado esquerdo é o vencedor!!!!!!!!";
+   }
+   if(pont2 == vencedor){ //definindo venncedor como lado esquerdo
+    fill (0,255,0);
+    ganhou = "Lado esquerdo é o vencedor!!!!!!!!"; 
+   }  
+    background(180,0,0);
+    fill(255); // definindo a cor das letras como brancas
+    text("Fim de jogo", width/2, height/3 -200);
+    text ("click para jogar novamente", width/2, height/3 +200);
+    fill(0,255,0); // definindo a cor das letras como verde
+    text(ganhou, width/2, height/3); // definindo o texto do vencedor
+  
+    if(mousePressed){
+      pont1 = 0;
+      pont2 = 0;
+      v_b = 8;
+    }
+  ordem = 1;
 }
 
 void tela_pause(){
-  
-  if (b_pause == 1){
-  //tem que congelar o jogo, por isso iguala a variavel a 0, logo as velocidades são = 0
-  velocide1 = 0;
-  velocidade2 = 0;
-  
+ 
+  v_b = 0;
   background(180,0,0);
   textSize(height/5); // tamanho da letra
   text("PAUSE", width/2, height/3 -200);
   textSize(height/15);
   text ("click para retornar", width/2, height/3 +200);
 
-   if (mousePressed){
-   velocide1 = 3;
-   velocidade2 = 2;
-   b_pause = 0;
-   
-   }}
+  if (mousePressed){
+     v_b = 8;
+  }
+ ordem = 2;
 
 }
-
-void fim_jogo(){ // função de fim de jogo
-  textSize(height/10);
-  
-  if (placar_ld == vencedor){ //definindo venncedor como lado direito
-    fill (0,255,0);
-    tela_venc("Lado direito é o vencedor!!!!!!!!");
-   }
-   
-   if(placar_le == vencedor){ //definindo venncedor como lado esquerdo
-     fill (0,255,0);
-    tela_venc("Lado esquerdo é o vencedor!!!!!!!!"); 
-   }
-}
-
-void tela_venc (String text) {//tela de vencedor
-//tem que congelar o jogo, por isso iguala a variavel a 0, logo as velocidades são = 0
-  velocide1 = 0;
-  velocidade2 = 0;
-
-  background(180,0,0);
-  fill(255); // definindo a cor das letras como brancas
-  text("Fim de jogo", width/2, height/3 -200);
-  text ("click para jogar novamente", width/2, height/3 +200);
-  fill(0,255,0); // definindo a cor das letras como verde
-  text(text, width/2, height/3); // definindo o texto do vencedor
-  
-  if(mousePressed){
-    // placar_ld = placar do lado direito
-  // placar_le = placar do lado esquerdo
-  // como o jogo reiniciou, as velocidades voltam ao normal
-    placar_ld = 0;
-    placar_le = 0;
-    velocide1 = 3;
-    velocidade2 = 2;}
-    
-} 
-
 
