@@ -1,0 +1,43 @@
+--------------------------------------
+No Processing:
+--------------------------------------
+	1 - Sketch > Import library > Serial
+	2 - Fazer declarações necessárias:
+	2.1 - Declaração "da porta"
+		serial MyPort   (exemplo)
+	2.2 - Estabelecer a comunicação(void setup):
+		String portName = "COM5";	<-- Esse daqui é a porta utilizada! Trocar se for diferente!
+		myPort = new Serial(this, portName, 9600);	<-- Coleta de dados.
+	2.3 - Interpretação no "draw":
+		if ( myPort.available() > 0) { 		<-- igual ao serial.available, mas função.
+			Dentro dessa função, haverá a lógica de coleta de dados seriais		
+			val = myPort.readStringUntil('\n'); 	<-- Exemplo 
+		}
+		
+--------------------------------------
+No Arduino:
+--------------------------------------
+ 	1 - Utilizar os comandos já conhecidos de comunicação serial
+	2 - Desenvolver a lógica para passar os dados necessários.
+
+--------------------------------------
+A PORTA
+--------------------------------------
+Existem algumas formas de encontrar a porta no windows:
+Aparentemente o app do arduino indica a porta que ele está conectado caso faça:
+	1 - Tools > Port > ---
+		https://www.youtube.com/watch?v=7iMMUO0J3h4 <-- Esse vídeo faz um exemplo utilizando isso
+
+Outro método é pelo Gerenciador de Dispositivos:
+	1 - Abrir o gerenciador de dispositivos
+	2 - Expandir Ports(COM & LPT)
+	3 - Estará lá algo como: "Arduino UNO (COM3)
+
+Se precisar de outros métodos, esses links podem ajudar:
+
+https://ssg-drd-iot.github.io/getting-started-guides/docs/ide_setup/arduino/details-serial_port-windows.html
+https://windowsreport.com/arduino-port-not-showing-up/
+
+Aparentemente, era mais fácil do que a gente pensava
+Se não funcionar... (Inserir meme do Ralph "Chuckles I'm in Danger" aqui)
+

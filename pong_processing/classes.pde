@@ -18,17 +18,41 @@ class bol{ // Classe da bola
     y += yspeed;
   }
   
-  void checkb(){ // Checa se bateu em algum lugar
-    if (x > width || x < 0){
-      xspeed = xspeed * (-1);
-    }
-    if (y > height || y < 0){
+  // Checa se bateu em algum lugar
+  void checkb(){   
+    //Checar o comprimento máx (desativado para testar o reseta_bola)
+   // if (x > width || x < 0){  
+   //   xspeed = xspeed * (-1);
+   // }
+   //Checar a altura máx
+    if (y > height || y < 0){ 
       yspeed = yspeed * (-1);
-    }   
+    }  
+    
+    //Condições da bolinha bater na parede
+    //Adicionei um incremento na pontuação aqui, caso queiram comprimir o código
+    if(x > width){
+      pont1++;
+       reseta_bola();
+    }
+    if(x < 0){
+      pont2++;
+       reseta_bola();
+     }
   } 
   
-  void checkpont(){ // Aumenta a pontuação dos jogadores
-    if(x == 0){
+  //Função para colocar a bolinha no centro novamente.
+  //OBS: Ajustar para a bolinha ir para o lado oposto do jogador que pontuar!!!!!!!!!!!!!!
+  void reseta_bola(){
+    x = width/2;
+    y = height/2;
+
+  }
+  
+  //Checagem para aumentar a pontuação dos jogadores
+  void checkpont(){ 
+    //Aqui já poderia fazer o incremento
+    if(x == 0.1){
      pont1 += 1;
     }
     if(x == width){
