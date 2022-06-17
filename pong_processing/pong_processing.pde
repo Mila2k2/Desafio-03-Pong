@@ -4,16 +4,22 @@ int pont1 = 0, pont2 = 0; // Pontuação dos jogadores
 int v_b = 8; //Velocidade das barras
 int ordem = 0; // Chamada das telas
 String ganhou = ""; // Nome do jogador que ganhou (numero 1/ numero 2)
-int vencedor = 3; // Quantidades de pontos para vencer/perder
+int vencedor = 2; // Quantidades de pontos para vencer/perder
 bol b; // Objeto bola
+bot b1, b2, b3, b4;
 int pontc1 = 0, pontc2 = 0;
 
 
 void setup(){
-  size(1080,720); //Tamanho da tela
-  //fullScreen(); // Tamanho preenchendo a tela
+  //size(1080,720); //Tamanho da tela
+  fullScreen(); // Tamanho preenchendo a tela
   textAlign(CENTER, CENTER); //  Alianhmento do texto
   b = new bol(); // Inicia o objeto bola
+  
+  b1 = new bot();
+  b2 = new bot();
+  b3 = new bot();
+  b4 = new bot();
 }
 
 void draw(){ // main
@@ -95,7 +101,7 @@ void fim_jogo(){ // função de fim de jogo
     background(180,0,0);
     fill(255); // definindo a cor das letras como brancas
     text("Fim de jogo", width/2, height/3 -200); // Textos finais
-    text ("click para jogar novamente", width/2, height/3 +200);
+    b3.escreve("click para jogar novamente", width/2, height/3 +200);
     fill(0,255,0); // definindo a cor das letras como verde
     text(ganhou, width/2, height/3); // definindo o texto do vencedor
   
@@ -113,10 +119,12 @@ void tela_pause(){ // Tela de pause do jogo
  
   v_b = 0; // zera a velocidade das barras
   background(180,0,0);
-  textSize(height/5); // Tamanho da letra
+  textSize(height/5); 
   text("PAUSE", width/2, height/3 -200); // Textos de pause
-  textSize(height/15);
-  text ("click para retornar", width/2, height/3 +200);
+  
+  b2.escreve("Retomar", width/2, height/3 +200);
+  b4.escreve("Casa", width/2, height/2 +200);
+  //text ();
   
   if (mousePressed){ // é para no futuro retomar o jogo
      v_b = 8;
@@ -130,17 +138,8 @@ void tela_inicial(){ // Primeira tela
    textSize(height/10);
    fill(255); // definindo a cor das letras como brancas
    text("POOng", width/2, height/3 -200); // Textos finais
-   text ("Jogar", width/2, height/3 +200);
    
-    
-   rectMode(RADIUS);  
-   fill(180,180, 0);  
-   rect( width/2, height/2.8 +200, 150, 60);  
-   textAlign(CENTER, CENTER); 
-   textSize(height/10);
-   fill(0);  // Set fill to gray
-   text ("Jogar", width/2, height/3 +200);      
-    
+   b1.escreve("Jogar",width/2, height/3 +200);
     
    if(mousePressed){ // Caso pressione o mouse o jogo comeca
      ordem = 1;
