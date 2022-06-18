@@ -1,25 +1,30 @@
+import processing.serial.*;
+
 float p1 = 0, p2 = 0; // Posição das barras, eixo y
 float x = 0, y = 0; // Posicao da bolinha
 int pont1 = 0, pont2 = 0; // Pontuação dos jogadores
 int v_b = 8; //Velocidade das barras
 int ordem = 0; // Chamada das telas
 String ganhou = ""; // Nome do jogador que ganhou (numero 1/ numero 2)
-int vencedor = 2; // Quantidades de pontos para vencer/perder
+int vencedor = 6; // Quantidades de pontos para vencer/perder
 bol b; // Objeto bola
 bot b1, b2, b3, b4;
+Serial MyPort;
 int pontc1 = 0, pontc2 = 0;
+String barra1 = "";
 
+String portName = "COM5";  
 
 void setup(){
-  //size(1080,720); //Tamanho da tela
-  fullScreen(); // Tamanho preenchendo a tela
+  size(1080,720); //Tamanho da tela
+  //fullScreen(); // Tamanho preenchendo a tela
   textAlign(CENTER, CENTER); //  Alianhmento do texto
   b = new bol(); // Inicia o objeto bola
   
-  b1 = new bot();
-  b2 = new bot();
-  b3 = new bot();
-  b4 = new bot();
+  b1 = new bot(); b2 = new bot(); b3 = new bot(); b4 = new bot();
+  
+  MyPort = new Serial(this, portName, 9600); 
+   
 }
 
 void draw(){ // main
@@ -86,7 +91,12 @@ void dinamico(){ // Tela das movimentações principais do jogo
     if(key == 'b'){
        tela_pause();
     }
-  } 
+  }
+  
+  if ( MyPort.available() > 0) {   
+      barra1 = MyPort.readStringUntil('\n');  
+      println("Valor barra1: ",barra1);
+    }
 }
 
 void fim_jogo(){ // função de fim de jogo
