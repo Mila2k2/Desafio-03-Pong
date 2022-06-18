@@ -11,7 +11,7 @@ bol b; // Objeto bola
 bot b1, b2, b3, b4;
 Serial MyPort;
 int pontc1 = 0, pontc2 = 0;
-String barra1 = "";
+String pacote = "";
 
 String portName = "COM5";  
 
@@ -94,8 +94,8 @@ void dinamico(){ // Tela das movimentações principais do jogo
   }
   
   if ( MyPort.available() > 0) {   
-      barra1 = MyPort.readStringUntil('\n');  
-      println("Valor barra1: ",barra1);
+      pacote = MyPort.readStringUntil('\n'); 
+      println("Valor pacote: ", pacote);
     }
 }
 
