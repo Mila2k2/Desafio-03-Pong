@@ -28,10 +28,10 @@ void setup() {
 
 void loop() {
   valor_pot1 = map(analogRead(pot1),0,1023,0,255);
-  Serial.print(String(valor_pot1) + " - ");
+  Serial.print(String(valor_pot1) + "-");
   
   valor_pot2 = map(analogRead(pot2),0,1023,0,255);
-  Serial.print(String(valor_pot2) + " - ");
+  Serial.print(String(valor_pot2) + "-");
   
   v_b01 = !digitalRead(b01);
   v_b02 = !digitalRead(b02);
@@ -39,9 +39,9 @@ void loop() {
   v_b03 = !digitalRead(b03);
   v_b04 = !digitalRead(b04);
 
-  Serial.print(String(v_b01) + " - ");
-  Serial.print(String(v_b02) + " - ");
-  Serial.print(String(v_b03) + " - ");
+  Serial.print(String(v_b01) + "-");
+  Serial.print(String(v_b02) + "-");
+  Serial.print(String(v_b03) + "-");
   Serial.print(String(v_b04) + "\n");
   delay(500);
 }
