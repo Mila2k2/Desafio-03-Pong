@@ -38,6 +38,12 @@ Se precisar de outros métodos, esses links podem ajudar:
 https://ssg-drd-iot.github.io/getting-started-guides/docs/ide_setup/arduino/details-serial_port-windows.html
 https://windowsreport.com/arduino-port-not-showing-up/
 
-Aparentemente, era mais fácil do que a gente pensava
-Se não funcionar... (Inserir meme do Ralph "Chuckles I'm in Danger" aqui)
+---------------------------------------
+A PORTA (LINUX)
+---------------------------------------
 
+1-Unplug your Arduino.
+2-Type "dmesg" (as root).
+3-Plug in your Arduino.
+4-Type "dmesg" again and look at the new messages.
+----------->It should say that your device attached as, for example, "ttyUSB0". Then use "/dev/ttyUSB0" as your port.
