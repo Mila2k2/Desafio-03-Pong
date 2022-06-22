@@ -11,9 +11,13 @@ bol b; // Objeto bola
 bot b1, b2, b3, b4;
 Serial MyPort;
 int pontc1 = 0, pontc2 = 0;
-String pacote = "";
 
-String portName = "COM5";  
+String pacote = "";
+String portName = "COM5";
+char[] pacoteaberto;
+int tracos = 0;
+String barra1 = "", barra2 = "";
+int cont = 0;
 
 void setup(){
   size(1080,720); //Tamanho da tela
@@ -58,6 +62,11 @@ void keyPressed() { // Move as barras com um limite inferior e superior
 //Barras não sincronizadas devido a essa função so pegar uma tecla por vez
 }
 
+void movebarra() { // Move as barras nos potenciometros
+     //p1 = map(float(barra1),0,255, 0, height - 200);
+     //p2 = map(float(barra2),0,255, 0, height - 200);
+}
+
 void meio(){ // Desenha os traços no meio
   for (int i = 0; i < height; i = i + 20) {
     fill(255);
@@ -77,6 +86,7 @@ void dinamico(){ // Tela das movimentações principais do jogo
   rect(6, p1, 14, 200, 28); // Desenha os retângulos certinho
   rect((width - 16 - 6), p2, 14, 200, 28);
   
+  movebarra();
   b.display(); //Ações da bola
   b.move();
   b.checkb();
@@ -95,7 +105,18 @@ void dinamico(){ // Tela das movimentações principais do jogo
   
   if ( MyPort.available() > 0) {   
       pacote = MyPort.readStringUntil('\n'); 
-      println("Valor pacote: ", pacote);
+      barra1 = "";
+      if(pacote != null){
+        //pacote = pacote.replace("\n", ""); 
+        pacoteaberto = pacote.toCharArray();
+        
+        //for(int i = 0; i < 3; i++){
+          //barra1 = barra1 + pacoteaberto[i];
+        //}
+        
+      }
+        //println("Valor barra1: ", barra1);
+        //println("Valor pacote: ", pacote);
     }
 }
 
