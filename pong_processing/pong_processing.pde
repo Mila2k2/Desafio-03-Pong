@@ -63,8 +63,8 @@ void keyPressed() { // Move as barras com um limite inferior e superior
 }
 
 void movebarra() { // Move as barras nos potenciometros
-     //p1 = map(float(barra1),0,255, 0, height - 200);
-     //p2 = map(float(barra2),0,255, 0, height - 200);
+     p1 = map(int(barra1),0,255, 0, height - 200);
+     p2 = map(int(barra2),0,255, 0, height - 200);
 }
 
 void meio(){ // Desenha os traços no meio
@@ -105,16 +105,18 @@ void dinamico(){ // Tela das movimentações principais do jogo
   
   if ( MyPort.available() > 0) {   
       pacote = MyPort.readStringUntil('\n'); 
-      barra1 = "";
       if(pacote != null){
+         barra1 = "";
         //pacote = pacote.replace("\n", ""); 
         pacoteaberto = pacote.toCharArray();
         
-        //for(int i = 0; i < 3; i++){
+        for(int i = 0; i < 3; i++){
           //barra1 = barra1 + pacoteaberto[i];
-        //}
+          //if(pacoteaberto[i] == '-' ){break;}
+        }
         
       }
+      println("Barra 1: ", barra1,"Pacote", pacote);
         //println("Valor barra1: ", barra1);
         //println("Valor pacote: ", pacote);
     }
