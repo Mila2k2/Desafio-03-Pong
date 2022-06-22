@@ -1,4 +1,4 @@
-import processing.serial.*;
+//import processing.serial.*; // Comentar a variável para não usar comunicação serial
 
 float p1 = 0, p2 = 0; // Posição das barras, eixo y
 float x = 0, y = 0; // Posicao da bolinha
@@ -9,16 +9,17 @@ String ganhou = ""; // Nome do jogador que ganhou (numero 1/ numero 2)
 int vencedor = 6; // Quantidades de pontos para vencer/perder
 bol b; // Objeto bola
 bot b1, b2, b3, b4;
-Serial MyPort;
+//Serial MyPort; // Comentar a variável para não usar comunicação serial
 int pontc1 = 0, pontc2 = 0;
 
+/* // Comentar as variáveis abaixo para não usar comunicação serial
 String pacote = "";
 String portName = "COM5";
 char[] pacoteaberto;
 int tracos = 0;
 String barra1 = "", barra2 = "";
 int cont = 0;
-
+*/
 void setup(){
   size(1080,720); //Tamanho da tela
   //fullScreen(); // Tamanho preenchendo a tela
@@ -27,7 +28,7 @@ void setup(){
   
   b1 = new bot(); b2 = new bot(); b3 = new bot(); b4 = new bot();
   
-  MyPort = new Serial(this, portName, 9600); 
+  //MyPort = new Serial(this, portName, 9600);  // Comentar a variável para não usar comunicação serial
    
 }
 
@@ -62,7 +63,7 @@ void keyPressed() { // Move as barras com um limite inferior e superior
 //Barras não sincronizadas devido a essa função so pegar uma tecla por vez
 }
 
-void movebarra() { // Move as barras nos potenciometros
+void movebarra() { // Move as barras nos potenciometros(Comunicação serial)
      //p1 = map(int(barra1),0,255, 0, height - 200); 
      //p2 = map(int(barra2),0,255, 0, height - 200);
 }
@@ -102,8 +103,8 @@ void dinamico(){ // Tela das movimentações principais do jogo
        tela_pause();
     }
   }
-  
-  if ( MyPort.available() > 0) {   
+  /*
+  if ( MyPort.available() > 0) {   // Comentar tudo dentro desse if para usar sem comunicação
       pacote = MyPort.readStringUntil('\n'); 
       if(pacote != null){
          barra1 = "";
@@ -120,6 +121,7 @@ void dinamico(){ // Tela das movimentações principais do jogo
         //println("Valor barra1: ", barra1);
         //println("Valor pacote: ", pacote);
     }
+    */
 }
 
 void fim_jogo(){ // função de fim de jogo
