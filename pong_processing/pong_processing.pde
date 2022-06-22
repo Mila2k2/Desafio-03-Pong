@@ -63,8 +63,8 @@ void keyPressed() { // Move as barras com um limite inferior e superior
 }
 
 void movebarra() { // Move as barras nos potenciometros
-     p1 = map(int(barra1),0,255, 0, height - 200);
-     p2 = map(int(barra2),0,255, 0, height - 200);
+     //p1 = map(int(barra1),0,255, 0, height - 200); 
+     //p2 = map(int(barra2),0,255, 0, height - 200);
 }
 
 void meio(){ // Desenha os traços no meio
