@@ -16,14 +16,15 @@ class barra {
   }
  
   void barra_inicio(){
-  rect(local_x, local_y, largura, altura);
-  rectMode(CENTER);
-  fill(255);
+    rect(local_x, local_y, largura, altura);
+    rectMode(CENTER);
+    fill(255);
   }
   
+  void mover(int veloy){
+    local_y = local_y + veloy;
   
-  
-  
-  
-  
+}
+
+ 
 }
