@@ -7,10 +7,10 @@ class barra {
  
   barra(boolean esquerda){
   if(esquerda){
-    local_x =  largura / 2 + 10; // o +10 serve para se afastar da borda
+    local_x =  largura + 10; // o +10 serve para se afastar da borda
   
   } else{
-    local_x = width - largura;
+    local_x = width - largura - 10;// o -10 serve para se afastar da borda
  
   }
   }
@@ -22,7 +22,8 @@ class barra {
   }
   
   void mover(int veloy){
-    local_y = local_y + veloy;
+    local_y = local_y + veloy; //soma a posição inicial mais a velocidade
+    local_y = constrain(local_y, altura/2, height- altura/2); // restringe a movimentação em limites superiores e inferiores
   
 }
 
