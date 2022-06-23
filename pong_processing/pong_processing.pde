@@ -1,5 +1,4 @@
 //import processing.serial.*; // Comentar a variável para não usar comunicação serial
-float p1 = 0, p2 = 0; // Posição das barras, eixo y
 float x = 0, y = 0;  // Posicao da bolinha
 int pont1 = 0, pont2 = 0; // Pontuação dos jogadores
 int v_b = 8; //Velocidade das barras
@@ -52,20 +51,20 @@ void draw(){ // main
   }
 }
 
-/*void keyPressed() { // Move as barras com um limite inferior e superior
-    if (keyCode == UP && local_x > 0) {
-      local_x -= v_b;
-    } else if (keyCode == DOWN && local_x < (height - 200)) {
-      local_x += v_b;
+void keyPressed() { // Move as barras com um limite inferior e superior
+    int v_b = 8; // velocidade da barra
+    if (keyCode == UP ) { 
+      barra_direita.mover(-v_b);
+    } else if (keyCode == DOWN ) {
+      barra_direita.mover(v_b);
     }
-     if(key == 'w' && local_y > 0){
-      local_y -= v_b;
-    } else if(key == 's' && local_y < (height - 200)){
-      local_y += v_b;
+     if(key == 'w'){
+      barra_esquerda.mover(-v_b);
+    } else if(key == 's' ){
+      barra_esquerda.mover(v_b);
     }
 //Barras não sincronizadas devido a essa função so pegar uma tecla por vez
 }
-*/
 
 void movebarra() { // Move as barras nos potenciometros(Comunicação serial)
      //p1 = map(int(barra1),0,255, 0, height - 200); 
