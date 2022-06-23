@@ -1,7 +1,6 @@
 //import processing.serial.*; // Comentar a variável para não usar comunicação serial
-
 float p1 = 0, p2 = 0; // Posição das barras, eixo y
-float x = 0, y = 0; // Posicao da bolinha
+float x = 0, y = 0;  // Posicao da bolinha
 int pont1 = 0, pont2 = 0; // Pontuação dos jogadores
 int v_b = 8; //Velocidade das barras
 int ordem = 0; // Chamada das telas
@@ -11,7 +10,9 @@ bol b; // Objeto bola
 bot b1, b2, b3, b4;
 //Serial MyPort; // Comentar a variável para não usar comunicação serial
 int pontc1 = 0, pontc2 = 0;
-
+ barra barra_direita;
+ barra barra_esquerda;
+ 
 /* // Comentar as variáveis abaixo para não usar comunicação serial
 String pacote = "";
 String portName = "COM5";
@@ -27,9 +28,11 @@ void setup(){
   b = new bol(); // Inicia o objeto bola
   
   b1 = new bot(); b2 = new bot(); b3 = new bot(); b4 = new bot();
-  
-  //MyPort = new Serial(this, portName, 9600);  // Comentar a variável para não usar comunicação serial
+  barra_direita = new barra(false);// falso pq é direita
+  barra_esquerda = new barra(true);// verdadeiro pq é esquerda
    
+  //MyPort = new Serial(this, portName, 9600);  // Comentar a variável para não usar comunicação serial
+
 }
 
 void draw(){ // main
@@ -49,19 +52,20 @@ void draw(){ // main
   }
 }
 
-void keyPressed() { // Move as barras com um limite inferior e superior
-    if (keyCode == UP && p1 > 0) {
-      p1 -= v_b;
-    } else if (keyCode == DOWN && p1 < (height - 200)) {
-      p1 += v_b;
+/*void keyPressed() { // Move as barras com um limite inferior e superior
+    if (keyCode == UP && local_x > 0) {
+      local_x -= v_b;
+    } else if (keyCode == DOWN && local_x < (height - 200)) {
+      local_x += v_b;
     }
-     if(key == 'w' && p2 > 0){
-      p2 -= v_b;
-    } else if(key == 's' && p2 < (height - 200)){
-      p2 += v_b;
+     if(key == 'w' && local_y > 0){
+      local_y -= v_b;
+    } else if(key == 's' && local_y < (height - 200)){
+      local_y += v_b;
     }
 //Barras não sincronizadas devido a essa função so pegar uma tecla por vez
 }
+*/
 
 void movebarra() { // Move as barras nos potenciometros(Comunicação serial)
      //p1 = map(int(barra1),0,255, 0, height - 200); 
@@ -84,8 +88,8 @@ void dinamico(){ // Tela das movimentações principais do jogo
   text(pontc1, width/4, 100); // Mostra as pontuacoes alinhadas
   text(pontc2, width - (width/4), 100);
   
-  rect(6, p1, 14, 200, 28); // Desenha os retângulos certinho
-  rect((width - 16 - 6), p2, 14, 200, 28);
+  barra_esquerda.barra_inicio(); 
+  barra_direita.barra_inicio();
   
   movebarra();
   b.display(); //Ações da bola
