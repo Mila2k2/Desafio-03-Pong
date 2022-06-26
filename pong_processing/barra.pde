@@ -2,7 +2,7 @@ class barra {
   
  float largura = 15;
  float altura = 200;
- float local_y = height/2; //posição y/2 para comerçar no centro da tela
+ float local_y = height/2; //posição y/2 para comerçar no centro da barra
  float local_x; //poisção x
  
   barra(boolean esquerda){
@@ -15,7 +15,7 @@ class barra {
   }
   }
  
-  void barra_inicio(){
+  void barra_inicio(){ // configurando as barras iniciais
     rect(local_x, local_y, largura, altura);
     rectMode(CENTER);
     fill(255);
