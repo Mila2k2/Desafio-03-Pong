@@ -5,7 +5,7 @@ int pont1 = 0, pont2 = 0; // Pontuação dos jogadores
 int v_b = 8; //Velocidade das barras
 int ordem = 0; // Chamada das telas
 String ganhou = ""; // Nome do jogador que ganhou (numero 1/ numero 2)
-int vencedor = 1; // Quantidades de pontos para vencer/perder
+int vencedor = 2; // Quantidades de pontos para vencer/perder
 bol b; // Objeto bola
 bot b1, b2, b3, b4;
 //Serial MyPort; // Comentar a variável para não usar comunicação serial
@@ -54,6 +54,8 @@ void draw(){ // main
         if(!mousePressed && reset == 1){
            reset = 0;
            ordem = 0;
+          barra_esquerda.local_y = height/2; //As barras começam no centro quando o jogo reinicia
+          barra_direita.local_y = height/2;
         }
         break;
   }
