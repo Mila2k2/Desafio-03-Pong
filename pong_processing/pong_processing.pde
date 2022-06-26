@@ -89,6 +89,8 @@ void dinamico(){ // Tela das movimentações principais do jogo
   
   barra_esquerda.barra_inicio(); 
   barra_direita.barra_inicio();
+  b.colisaobarrad(barra_direita.local_x, barra_direita.local_y, barra_direita.largura, barra_direita.altura);
+  b.colisaobarrae(barra_esquerda.local_x, barra_esquerda.local_y, barra_esquerda.largura, barra_esquerda.altura);
   
   movebarra();
   b.display(); //Ações da bola
