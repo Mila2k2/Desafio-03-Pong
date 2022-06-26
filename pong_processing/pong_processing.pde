@@ -1,10 +1,11 @@
 //import processing.serial.*; // Comentar a variável para não usar comunicação serial
+int reset = 0;
 float x = 0, y = 0;  // Posicao da bolinha
 int pont1 = 0, pont2 = 0; // Pontuação dos jogadores
 int v_b = 8; //Velocidade das barras
 int ordem = 0; // Chamada das telas
 String ganhou = ""; // Nome do jogador que ganhou (numero 1/ numero 2)
-int vencedor = 6; // Quantidades de pontos para vencer/perder
+int vencedor = 1; // Quantidades de pontos para vencer/perder
 bol b; // Objeto bola
 bot b1, b2, b3, b4;
 //Serial MyPort; // Comentar a variável para não usar comunicação serial
@@ -47,7 +48,14 @@ void draw(){ // main
       break;
     case 3:
       fim_jogo();
-      break;
+        if(mousePressed && reset == 0){
+           reset = 1;
+        }
+        if(!mousePressed && reset == 1){
+           reset = 0;
+           ordem = 0;
+        }
+        break;
   }
 }
 
@@ -144,14 +152,7 @@ void fim_jogo(){ // função de fim de jogo
     b3.escreve("click para jogar novamente", width/2, height/3 +200);
     fill(0,255,0); // definindo a cor das letras como verde
     text(ganhou, width/2, height/3); // definindo o texto do vencedor
-  
-  
-    if(mousePressed){ // Clicando com o mouse reinicia as variáveis do jogo
-      pont1 = 0;
-      pont2 = 0;
-      v_b = 8;
-    }
-    
+ 
     ordem = 3; // Mantem a tela final ativa
 }
 
@@ -174,6 +175,8 @@ void tela_pause(){ // Tela de pause do jogo
 }
 
 void tela_inicial(){ // Primeira tela
+   pont1 = 0;
+   pont2 = 0;
    background(200,0,0);
    textSize(height/10);
    fill(255); // definindo a cor das letras como brancas
