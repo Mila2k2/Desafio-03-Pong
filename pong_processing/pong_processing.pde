@@ -106,7 +106,7 @@ void fim_jogo(){ // função de fim de jogo
     ganhou = "Lado esquerdo é o vencedor!!!!!!!!";
    } else if(pont2 == vencedor){ //definindo vencedor como um  outro lado
     fill (0,255,0);
-    ganhou = "Lado esquerdo é o vencedor!!!!!!!!"; 
+    ganhou = "Lado direito é o vencedor!!!!!!!!"; 
    }  
     background(180,0,0);
     fill(255); // definindo a cor das letras como brancas
