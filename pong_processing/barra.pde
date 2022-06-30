@@ -3,7 +3,7 @@ class barra {
  float largura = 15;
  float altura = 200;
  float local_y = height/2; //posição y/2 para comerçar no centro da barra
- float local_x; //poisção x
+ float local_x; 
  
   barra(boolean esquerda){
     if(esquerda){
@@ -11,12 +11,10 @@ class barra {
     
     } else{
       local_x = width - largura - 10;// o -10 serve para se afastar da borda
-   
     }
   }
  
   void barra_inicio(){ // configurando as barras iniciais
-    rectMode(CENTER);
     fill(255);
     rect(local_x, local_y, largura, altura, 30);
     
@@ -28,5 +26,4 @@ class barra {
     //local_y = map(int(barra1),0,255, 0, height - 200);  // Potenciometro
   }
 
- 
 }
