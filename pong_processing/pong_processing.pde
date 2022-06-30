@@ -135,20 +135,19 @@ void dinamico(){ // Tela das movimentações principais do jogo
 }
 
 void fim_jogo(){ // função de fim de jogo
-  textSize(height/10);
-  if (pont1 == vencedor){ //definindo vencedor como um lado
-    fill (0,255,0);
-    ganhou = "Lado esquerdo é o vencedor!";
-   } else if(pont2 == vencedor){ //definindo vencedor como um  outro lado
-    fill (0,255,0);
-    ganhou = "Lado direito é o vencedor!"; 
+  if (pontc2 == vencedor){ //definindo vencedor como um lado
+     ganhou = "Lado esquerdo é o vencedor!";
+   } else if(pontc1 == vencedor){ //definindo vencedor como um  outro lado
+     ganhou = "Lado direito é o vencedor!"; 
    }  
     background(180,0,0);
+    textSize(height/10);
     fill(255); // definindo a cor das letras como brancas
     text("Fim de jogo", width/2, height/3 -200); // Textos finais
-    b3.escreve("click para jogar novamente", width/2, height/3 +200);
-    fill(0,255,0); // definindo a cor das letras como verde
+    println("Quem ganhou foi: ", ganhou);
     text(ganhou, width/2, height/3); // definindo o texto do vencedor
+    
+    b3.escreve("click para jogar novamente", width/2, height/3 +200);
  
     ordem = 3; // Mantem a tela final ativa
 }
