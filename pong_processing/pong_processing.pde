@@ -1,18 +1,3 @@
-//import processing.serial.*; // Comentar a variável para não usar comunicação serial
-int reset = 0;
-float x = 0, y = 0;  // Posicao da bolinha
-int pont1 = 0, pont2 = 0; // Pontuação dos jogadores
-int v_b = 8; //Velocidade das barras
-int ordem = 0; // Chamada das telas
-String ganhou = ""; // Nome do jogador que ganhou (numero 1/ numero 2)
-int vencedor = 2; // Quantidades de pontos para vencer/perder
-bol b; // Objeto bola
-bot b1, b2, b3, b4;
-//Serial MyPort; // Comentar a variável para não usar comunicação serial
-int pontc1 = 0, pontc2 = 0;
- barra barra_direita;
- barra barra_esquerda;
- 
 /* // Comentar as variáveis abaixo para não usar comunicação serial
 String pacote = "";
 String portName = "COM5";
@@ -76,11 +61,6 @@ void keyPressed() { // Move as barras com um limite inferior e superior
 //Barras não sincronizadas devido a essa função so pegar uma tecla por vez
 }
 
-void movebarra() { // Move as barras nos potenciometros(Comunicação serial)
-     //p1 = map(int(barra1),0,255, 0, height - 200); 
-     //p2 = map(int(barra2),0,255, 0, height - 200);
-}
-
 void meio(){ // Desenha os traços no meio
   for (int i = 0; i < height; i = i + 20) {
     fill(255);
@@ -102,7 +82,6 @@ void dinamico(){ // Tela das movimentações principais do jogo
   b.colisaobarrad(barra_direita.local_x, barra_direita.local_y, barra_direita.largura, barra_direita.altura);
   b.colisaobarrae(barra_esquerda.local_x, barra_esquerda.local_y, barra_esquerda.largura, barra_esquerda.altura);
   
-  movebarra();
   b.display(); //Ações da bola
   b.move();
   b.checkb();
