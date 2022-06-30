@@ -31,6 +31,7 @@ void setup(){
   size(1080,720); //Tamanho da tela
   //fullScreen(); // Tamanho preenchendo a tela
   textAlign(CENTER, CENTER); //  Alianhmento do texto
+  rectMode(CENTER);
   
   b = new bol(); // Inicia o objeto bola
   b1 = new bot(); b2 = new bot(); b3 = new bot(); b4 = new bot();
@@ -189,4 +190,3 @@ void fim_jogo(){ // função de fim de jogo
  
   ordem = 3; // Mantem a tela final ativa
 }
-
