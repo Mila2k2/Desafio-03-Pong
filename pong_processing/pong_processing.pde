@@ -1,3 +1,18 @@
+//import processing.serial.*; // Comentar a variável para não usar comunicação serial
+int reset = 0;
+float x = 0, y = 0;  // Posicao da bolinha
+int pont1 = 0, pont2 = 0; // Pontuação dos jogadores
+int v_b = 8; //Velocidade das barras
+int ordem = 0; // Chamada das telas
+String ganhou = ""; // Nome do jogador que ganhou (numero 1/ numero 2)
+int vencedor = 2; // Quantidades de pontos para vencer/perder
+bol b;
+bot b1, b2, b3, b4;
+//Serial MyPort; // Comentar a variável para não usar comunicação serial
+int pontc1 = 0, pontc2 = 0;
+ barra barra_direita;
+ barra barra_esquerda;
+ 
 /* // Comentar as variáveis abaixo para não usar comunicação serial
 String pacote = "";
 String portName = "COM5";
@@ -79,12 +94,13 @@ void dinamico(){ // Tela das movimentações principais do jogo
   
   barra_esquerda.barra_inicio(); 
   barra_direita.barra_inicio();
+  b.display(); //Mostra a bola
+  
+  b.move();
+  b.checkb();
   b.colisaobarrad(barra_direita.local_x, barra_direita.local_y, barra_direita.largura, barra_direita.altura);
   b.colisaobarrae(barra_esquerda.local_x, barra_esquerda.local_y, barra_esquerda.largura, barra_esquerda.altura);
   
-  b.display(); //Ações da bola
-  b.move();
-  b.checkb();
   b.checkpont();
   pontc1 = pont1 / 2; // Corrige a duplicação da pontuação
   pontc2 = pont2 / 2;
@@ -122,10 +138,10 @@ void fim_jogo(){ // função de fim de jogo
   textSize(height/10);
   if (pont1 == vencedor){ //definindo vencedor como um lado
     fill (0,255,0);
-    ganhou = "Lado esquerdo é o vencedor!!!!!!!!";
+    ganhou = "Lado esquerdo é o vencedor!";
    } else if(pont2 == vencedor){ //definindo vencedor como um  outro lado
     fill (0,255,0);
-    ganhou = "Lado direito é o vencedor!!!!!!!!"; 
+    ganhou = "Lado direito é o vencedor!"; 
    }  
     background(180,0,0);
     fill(255); // definindo a cor das letras como brancas
