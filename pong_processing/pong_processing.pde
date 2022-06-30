@@ -1,17 +1,22 @@
 //import processing.serial.*; // Comentar a variável para não usar comunicação serial
-int reset = 0;
+
 float x = 0, y = 0;  // Posicao da bolinha
-int pont1 = 0, pont2 = 0; // Pontuação dos jogadores
 int v_b = 8; //Velocidade das barras
+
 int ordem = 0; // Chamada das telas
 String ganhou = ""; // Nome do jogador que ganhou (numero 1/ numero 2)
+int reset = 0;
+
+int pont1 = 0, pont2 = 0; // Pontuação dos jogadores
+int pontc1 = 0, pontc2 = 0; // Pontuação dos jogadores corrigida
 int vencedor = 2; // Quantidades de pontos para vencer/perder
+
+
+//Serial MyPort; // Comentar a variável para não usar comunicação serial
 bol b;
 bot b1, b2, b3, b4;
-//Serial MyPort; // Comentar a variável para não usar comunicação serial
-int pontc1 = 0, pontc2 = 0;
- barra barra_direita;
- barra barra_esquerda;
+barra barra_direita;
+barra barra_esquerda;
  
 /* // Comentar as variáveis abaixo para não usar comunicação serial
 String pacote = "";
@@ -21,16 +26,16 @@ int tracos = 0;
 String barra1 = "", barra2 = "";
 int cont = 0;
 */
+
 void setup(){
   size(1080,720); //Tamanho da tela
   //fullScreen(); // Tamanho preenchendo a tela
   textAlign(CENTER, CENTER); //  Alianhmento do texto
-  b = new bol(); // Inicia o objeto bola
   
+  b = new bol(); // Inicia o objeto bola
   b1 = new bot(); b2 = new bot(); b3 = new bot(); b4 = new bot();
   barra_direita = new barra(false);// falso pq é direita
   barra_esquerda = new barra(true);// verdadeiro pq é esquerda
-   
   //MyPort = new Serial(this, portName, 9600);  // Comentar a variável para não usar comunicação serial
 
 }
@@ -48,15 +53,15 @@ void draw(){ // main
       break;
     case 3:
       fim_jogo();
-        if(mousePressed && reset == 0){
-           reset = 1;
-        }
-        if(!mousePressed && reset == 1){
-           reset = 0;
-           ordem = 0;
-          barra_esquerda.local_y = height/2; //As barras começam no centro quando o jogo reinicia
-          barra_direita.local_y = height/2;
-        }
+      if(mousePressed && reset == 0){
+        reset = 1;
+      }
+      if(!mousePressed && reset == 1){
+        reset = 0;
+        ordem = 0;
+        barra_esquerda.local_y = height/2; //As barras começam no centro quando o jogo reinicia
+        barra_direita.local_y = height/2;
+      }
         break;
   }
 }
@@ -84,6 +89,21 @@ void meio(){ // Desenha os traços no meio
   }
 }
 
+void tela_inicial(){ // Primeira tela
+   pont1 = 0; pont2 = 0;
+   
+   background(200,0,0);
+   textSize(height/6);
+   fill(255); 
+   text("POOng", width/2, height/3 -200); // Textos finais
+   
+   b1.escreve("Jogar",width/2, height/3 +200);
+    
+   if(mousePressed){ // Caso pressione o mouse o jogo comeca
+     ordem = 1;
+   }  
+}
+
 void dinamico(){ // Tela das movimentações principais do jogo
   background(180,0,0); // Cor do fundo
   meio(); // Desenha traços do meio
@@ -102,13 +122,13 @@ void dinamico(){ // Tela das movimentações principais do jogo
   b.colisaobarrae(barra_esquerda.local_x, barra_esquerda.local_y, barra_esquerda.largura, barra_esquerda.altura);
   
   b.checkpont();
-  pontc1 = pont1 / 2; // Corrige a duplicação da pontuação
-  pontc2 = pont2 / 2;
+  pontc1 = pont1 / 2; pontc2 = pont2 / 2; // Corrige a duplicação da pontuação
+  
   
   if (pontc1 == vencedor || pontc2 == vencedor){ //Analisando se o jogo acabou para acionar tela de fim
     fim_jogo();
    }  
-   if (keyPressed){ //Aciona o pause apertando a tecla b
+  if (keyPressed){ //Aciona o pause apertando a tecla b
     if(key == 'b'){
        tela_pause();
     }
@@ -134,29 +154,12 @@ void dinamico(){ // Tela das movimentações principais do jogo
     */
 }
 
-void fim_jogo(){ // função de fim de jogo
-  if (pontc2 == vencedor){ //definindo vencedor como um lado
-     ganhou = "Lado esquerdo é o vencedor!";
-   } else if(pontc1 == vencedor){ //definindo vencedor como um  outro lado
-     ganhou = "Lado direito é o vencedor!"; 
-   }  
-    background(180,0,0);
-    textSize(height/10);
-    fill(255); // definindo a cor das letras como brancas
-    text("Fim de jogo", width/2, height/3 -200); // Textos finais
-    println("Quem ganhou foi: ", ganhou);
-    text(ganhou, width/2, height/3); // definindo o texto do vencedor
-    
-    b3.escreve("click para jogar novamente", width/2, height/3 +200);
- 
-    ordem = 3; // Mantem a tela final ativa
-}
-
 void tela_pause(){ // Tela de pause do jogo
- 
   v_b = 0; // zera a velocidade das barras
+  
   background(180,0,0);
-  textSize(height/5); 
+  textSize(height/6); 
+  fill(255);
   text("PAUSE", width/2, height/3 -200); // Textos de pause
   
   b2.escreve("Retomar", width/2, height/3 +200);
@@ -170,17 +173,20 @@ void tela_pause(){ // Tela de pause do jogo
 
 }
 
-void tela_inicial(){ // Primeira tela
-   pont1 = 0;
-   pont2 = 0;
-   background(200,0,0);
-   textSize(height/10);
-   fill(255); // definindo a cor das letras como brancas
-   text("POOng", width/2, height/3 -200); // Textos finais
-   
-   b1.escreve("Jogar",width/2, height/3 +200);
-    
-   if(mousePressed){ // Caso pressione o mouse o jogo comeca
-     ordem = 1;
+void fim_jogo(){ // função de fim de jogo
+  if (pontc2 == vencedor){ //definindo vencedor como um lado
+     ganhou = "Lado esquerdo é o vencedor!";
+   } else if(pontc1 == vencedor){ //definindo vencedor como um  outro lado
+     ganhou = "Lado direito é o vencedor!"; 
    }  
+  background(180,0,0);
+  textSize(height/10);
+  fill(255); // definindo a cor das letras como brancas
+  text("Fim de jogo", width/2, height/3 -200); // Textos finais
+  text(ganhou, width/2, height/3); // definindo o texto do vencedor
+    
+  b3.escreve("click para jogar novamente", width/2, height/3 +200);
+ 
+  ordem = 3; // Mantem a tela final ativa
 }
+
