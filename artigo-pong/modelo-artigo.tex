@@ -1,0 +1,249 @@
+%% abtex2-modelo-artigo.tex, v-1.9.7 laurocesar
+%% Copyright 2012-2018 by abnTeX2 group at http://www.abntex.net.br/ 
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is the abnTeX2 team, led
+%% by Lauro César Araujo. Further information are available on 
+%% http://www.abntex.net.br/
+%%
+%% This work consists of the files abntex2-modelo-artigo.tex and
+%% abntex2-modelo-references.bib
+%%
+% ---------------------------------------------------------------
+% ---------------------------------------------------------------
+% abnTeX2: Modelo de Artigo Acadêmico em conformidade com
+% ABNT NBR 6022:2018: Informação e documentação - Artigo em publicação 
+% periódica científica - Apresentação
+% ---------------------------------------------------------------
+% Adaptado para uso na instituição acadêmica Senai Cimatec.
+% 25/05/2022
+% -----------------------------------------------------------------
+
+\documentclass[
+	% -- opções da classe memoir --
+	article,			% indica que é um artigo acadêmico
+	11pt,				% tamanho da fonte
+	oneside,			% para impressão apenas no recto. Oposto a twoside
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE % títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	brazil,				% o último idioma é o principal do documento
+	sumario=tradicional
+	]{abntex2}
+
+% --- Pacotes fundamentais 
+\usepackage{lmodern}		% Usa a fonte Latin Modern
+\usepackage[T1]{fontenc}	% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}	% Conversão automática dos acentos
+\usepackage{indentfirst}	% Indenta o 1. parágrafo de cada seção.
+\usepackage{nomencl} 		% Lista de simbolos
+\usepackage{color}			% Controle das cores
+\usepackage{xcolor}         % Criação de label com cores específicas
+\usepackage{graphicx}		% Inclusão de gráficos
+\usepackage{microtype} 		% para melhorias de justificação
+% --- Pacotes extras
+\usepackage{lipsum}			% para geração de dummy text
+% --- Pacotes de citações
+\usepackage[brazilian,hyperpageref]{backref}	
+\usepackage[alf]{abntex2cite}
+
+\usepackage{tikz} % Pacotes para manipulação de imagens
+\usepackage{float} % habilita a opção [H] (here) nas imagens
+\usepackage{listings} % inserção de código no PDF
+
+% ---
+% Configurações do pacote listings
+
+% criação de cores personalizadas
+\definecolor{gray}{RGB}{160, 161, 167}
+\definecolor{yellow}{RGB}{197, 163, 50}
+\definecolor{backcolour}{RGB}{249, 249, 249}
+\definecolor{blu}{RGB}{0, 152, 221}
+
+% configurações de estilo personalizado para o pacote listing
+\lstdefinestyle{bluloco-light}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\itshape\color{gray},
+    keywordstyle=\bfseries\color{blu},
+    numberstyle=\tiny\color{gray},
+    stringstyle=\color{yellow},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+% definição do estilo do pacote listing
+\lstset{style=bluloco-light}
+
+%//todo o que quem dizer isso? porque? é necessário fazer comentários.
+%//valar erick suzart
+%//checked mhar-vell OK
+
+% mapeamento de caracteres especiais: necessário para adicionar caracteres
+% especiais em código utilizando o pacote listing
+\lstset{literate=
+  {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+  {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+  {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+  {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+  {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+  {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+  {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+  {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+  {ã}{{\~a}}1 {ẽ}{{\~e}}1 {ĩ}{{\~i}}1 {õ}{{\~o}}1 {ũ}{{\~u}}1
+  {Ã}{{\~A}}1 {Ẽ}{{\~E}}1 {Ĩ}{{\~I}}1 {Õ}{{\~O}}1 {Ũ}{{\~U}}1
+  {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+  {ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+  {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+  {€}{{\euro}}1 {£}{{\pounds}}1 {«}{{\guillemotleft}}1
+  {»}{{\guillemotright}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1 {¿}{{?`}}1
+}
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+\renewcommand{\backref}{}
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+
+% ........................................................................
+% CONFIGURAÇÃO DO ENDEREÇO DAS FIGURAS
+\graphicspath{{source/pictures/}}
+
+% --- Informações de dados para CAPA e FOLHA DE ROSTO ---
+\titulo{Construção de plataforma de jogo em Processing com integração de Arduino.}
+\tituloestrangeiro{}
+\autor{
+      Ludmila Nascimento Dos Anjos
+      \\[0.5cm] 
+      Rafael Ferreira Viana de Mello
+      \\[0.5cm] 
+      Kauan Dantas Brito da Silva
+      \\[0.5cm] 
+      Gabriel Lopes Guimarães
+      }
+\local{Brasil}
+\data{20/06/2022}
+% ---
+\definecolor{blue}{RGB}{41,5,195}
+% --- informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={Modelo de artigo científico com abnTeX2},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{atigo científico}, 
+		colorlinks=true,  % false: boxed links; true: colored links
+    	linkcolor=blue,   % color of internal links
+    	citecolor=blue,   % color of links to bibliography
+    	filecolor=magenta,% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+\makeindex
+\setlrmarginsandblock{3cm}{3cm}{*}
+\setulmarginsandblock{3cm}{3cm}{*}
+\checkandfixthelayout
+% ---
+\setlength{\parindent}{1.3cm}
+\setlength{\parskip}{0.2cm}  
+\SingleSpacing
+% ----
+\begin{document}
+\selectlanguage{brazil}
+\frenchspacing
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+% Se desejar escrever o artigo em duas colunas, descomente a linha abaixo e a linha com o texto ``FIM DE ARTIGO EM DUAS COLUNAS''.
+% \twocolumn[    		% INICIO DE ARTIGO EM DUAS COLUNAS
+%
+% página de titulo principal (obrigatório)
+\maketitle
+% titulo em outro idioma (opcional)
+
+% resumo em português
+\begin{resumoumacoluna}
+   Conforme a ABNT NBR 6022:2018, o resumo no idioma do documento é elemento obrigatório.
+   Constituído de uma sequência de frases concisas e objetivas e não de uma simples enumeração de tópicos, não ultrapassando 250 palavras, seguido, logo abaixo, das palavras representativas do conteúdo do trabalho, isto é palavras-chave e/ou descritores, conforme a NBR 6028. (\ldots)
+   As palavras-chave devem figurar logo abaixo do resumo, antecedidas da expressão Palavras-chave:, separadas entre si por ponto e finalizadas também por ponto.
+
+   \vspace{\onelineskip}
+
+   \noindent
+   \textbf{Palavras-chave}: latex. abntex. editoração de texto.
+\end{resumoumacoluna}
+
+% resumo em inglês
+\renewcommand{\resumoname}{Abstract}
+\begin{resumoumacoluna}
+   \begin{otherlanguage*}{english}
+      According to ABNT NBR 6022:2018, an abstract in foreign language is optional.
+
+      \vspace{\onelineskip}
+
+      \noindent
+      \textbf{Keywords}: latex. abntex.
+   \end{otherlanguage*}
+\end{resumoumacoluna}
+
+% ]  				% FIM DE ARTIGO EM DUAS COLUNAS
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+%
+\input{sections/01-introduction}
+\input{sections/02-desenvolvimento}
+\input{sections/03-materials-and-methods}
+\input{sections/04-results}
+\input{sections/05-conclusion}
+% ----------------------------------------------------------
+\bookmarksetup{startatroot}% Finaliza a parte no bookmark do PDF, para que se inicie o bookmark na raiz 
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+% 
+% Referências bibliográficas
+% ----------------------------------------------------------
+\bibliography{references}
+% 
+% Agradecimentos
+% ----------------------------------------------------------
+\section*{Agradecimentos}
+Texto sucinto aprovado pelo periódico em que será publicado. Último elemento pós-textual.
+%
+\end{document}
