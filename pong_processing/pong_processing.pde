@@ -55,6 +55,9 @@ void draw(){ // main
       tela_pause();
       break;
     case 3:
+      tela_instrucoes(); 
+      break;
+    case 4:
       fim_jogo();
       if(mousePressed && reset == 0){
         reset = 1;
@@ -98,14 +101,38 @@ void tela_inicial(){ // Primeira tela
    background(200,0,0);
    textSize(height/6);
    fill(255); 
-   text("POOng", width/2, height/3 -200); // Textos finais
+   text("POOng", width/2, height/3 -150); // Textos finais
    
-   b1.escreve("Jogar",width/2, height/3 +200);
-    
-   if(mousePressed){ // Caso pressione o mouse o jogo comeca
-     ordem = 1;
+   b1.escreve("Jogar",width/2, height/3 +100);
+   
+   b1.escreve("Instruções",width/2, height/3 + 250);
+   
+   //fazer a distinção de se vai para as intruções ou para o jogo
+   
+   if(mousePressed){ // Caso pressione o mouse vai para as instruções
+     ordem = 3;
    }  
 }
+
+
+void tela_instrucoes(){
+    background(170,10,30);
+    textSize(height/25);
+    fill(255);
+    
+    text("Pong é uma simulação de uma partida de tênis de mesa.", width/2, height/4);
+    
+    String s = "O objetivo do jogo é fazer a bolinha chegar ao outro lado sem que seu oponente defenda e assim marcar mais pontos.";
+    text(s, width/2, height/2-50, width/2+100, height/2); 
+    
+    String n = "Utilize os botões grandes para controlar a sua barra e evite que a bola toque na parede!";
+    text(n, width/2, height/2+50, width/2+100, height/2); 
+
+     b1.escreve("Jogar",width/2, height/2 +200);
+     
+     
+}
+
 
 void dinamico(){ // Tela das movimentações principais do jogo
   background(180,0,0); // Cor do fundo
@@ -175,6 +202,7 @@ void tela_pause(){ // Tela de pause do jogo
   ordem = 2;
 
 }
+
 
 void fim_jogo(){ // função de fim de jogo
   if (pontc2 == vencedor){ //definindo vencedor como um lado
