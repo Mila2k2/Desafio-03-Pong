@@ -38,13 +38,13 @@ class bol{ // Classe da bola
   }
   
    void colisaobarrad(float xx, float yy, float largura, float altura){
-    if (x + r > xx - largura/2 && y < yy + altura/2 && y > yy - altura/2){ // condições para a bola recochetear
+    if (((x + r) > (xx - largura/2)) && (y < (yy + altura/2)) && (y > (yy - altura/2))){ // condições para a bola recochetear
      xspeed *= -1; // inverter a velocidade da bola
     }
   }
  
   void colisaobarrae(float xx, float yy, float largura, float altura){
-    if (y < yy + altura/2 && y > yy - altura/2 && x - r < xx + largura/2){ // condições para a bola recochetear
+    if ((y < (yy + altura/2)) && (y > (yy - altura/2)) && ((x - r) < (xx + largura/2))){ // condições para a bola recochetear
      xspeed *= -1; // inverter a velocidade da bola
     }
   }

@@ -19,12 +19,14 @@ barra barra_direita;
 barra barra_esquerda;
  
 /* // Comentar as variáveis abaixo para não usar comunicação serial
-String pacote = "";
 String portName = "COM5";
+String pacote = "";
 char[] pacoteaberto;
 int tracos = 0;
-String barra1 = "", barra2 = "";
 int cont = 0;
+
+String barra1 = "", barra2 = "";
+String botao1 = "", botao2 = "";
 */
 
 void setup(){

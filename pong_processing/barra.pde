@@ -7,10 +7,10 @@ class barra {
  
   barra(boolean esquerda){
     if(esquerda){
-      local_x =  largura + 10; // o +10 serve para se afastar da borda
+      local_x =  largura + 5; // o +5 serve para se afastar da borda
     
     } else{
-      local_x = width - largura - 10;// o -10 serve para se afastar da borda
+      local_x = width - largura - 5;// o -5 serve para se afastar da borda
     }
   }
  
