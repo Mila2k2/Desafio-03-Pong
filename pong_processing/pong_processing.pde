@@ -163,8 +163,8 @@ void tela_pause(){ // Tela de pause do jogo
   fill(255);
   text("PAUSE", width/2, height/3 -200); // Textos de pause
   
-  b2.escreve("Retomar", width/2, height/3 +200);
-  b4.escreve("Casa", width/2, height/2 +200);
+  b2.escreve("Retomar", width/2, height/3 +100);
+  b4.escreve("Reiniciar", width/2, height/2 +150);
   //text ();
   
   if (mousePressed){ // é para no futuro retomar o jogo
@@ -186,7 +186,7 @@ void fim_jogo(){ // função de fim de jogo
   text("Fim de jogo", width/2, height/3 -200); // Textos finais
   text(ganhou, width/2, height/3); // definindo o texto do vencedor
     
-  b3.escreve("click para jogar novamente", width/2, height/3 +200);
+  b3.escreve("Jogar novamente", width/2, height/3 +200);
  
   ordem = 3; // Mantem a tela final ativa
 }
