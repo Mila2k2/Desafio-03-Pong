@@ -49,13 +49,13 @@ void draw(){ // main
       tela_inicial();
       break;
     case 1:
-      dinamico();
+      tela_instrucoes();
       break;
     case 2:
-      tela_pause();
+      dinamico();
       break;
     case 3:
-      tela_instrucoes(); 
+      tela_pause();
       break;
     case 4:
       fim_jogo();
@@ -110,7 +110,7 @@ void tela_inicial(){ // Primeira tela
    //fazer a distinção de se vai para as intruções ou para o jogo
    
    if(mousePressed){ // Caso pressione o mouse vai para as instruções
-     ordem = 3;
+     ordem = 2;
    }  
 }
 
@@ -129,7 +129,6 @@ void tela_instrucoes(){
     text(n, width/2, height/2+50, width/2+100, height/2); 
 
      b1.escreve("Jogar",width/2, height/2 +200);
-     
      
 }
 
@@ -199,7 +198,7 @@ void tela_pause(){ // Tela de pause do jogo
   if (mousePressed){ // é para no futuro retomar o jogo
      v_b = 8;
   }
-  ordem = 2;
+  ordem = 3; //Mantém tela pause
 
 }
 
@@ -218,5 +217,5 @@ void fim_jogo(){ // função de fim de jogo
     
   b3.escreve("Jogar novamente", width/2, height/3 +200);
  
-  ordem = 3; // Mantem a tela final ativa
+  ordem = 4; // Mantem a tela final ativa
 }
