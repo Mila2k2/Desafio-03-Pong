@@ -26,5 +26,5 @@ void loop() {
 
   Serial.print(String(v_b01) + "-");
   Serial.print(String(v_b02) + "\n");
-  delay(500);
+  delay(50);
 }
