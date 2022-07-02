@@ -1,6 +1,6 @@
 import processing.serial.*; // Comentar a variável para não usar comunicação serial
-import javax.sound.sampled.*; //Abre biblioteca que suporta áudios
-import java.io.File; //Biblioteca pra acessar os arquivos de áudio
+//import javax.sound.sampled.*; //Abre biblioteca que suporta áudios
+//import java.io.File; //Biblioteca pra acessar os arquivos de áudio
 
 int v_b = 8; //Velocidade das barras
 
@@ -10,7 +10,7 @@ int reset = 0;
 
 int pont1 = 0, pont2 = 0; // Pontuação dos jogadores
 int pontc1 = 0, pontc2 = 0; // Pontuação dos jogadores corrigida
-int vencedor = 15; // Quantidades de pontos para vencer/perder
+int vencedor = 2; // Quantidades de pontos para vencer/perder
 
 
 //Serial MyPort; // Comentar a variável para não usar comunicação serial
@@ -54,33 +54,95 @@ void setup() {
 }
 /*
 void VictorySound(){ //Função do som do fim de jogo
-    File victory = new File("Pong_Sounds//victory-fanfare.wav"); //Adiciona o arquivo do áudio no código
-
-    Clip clip = AudioSystem.getClip();
-    clip.open(AudioSystem.getAudioInputStream(victory));
-    clip.start();
-    Thread.sleep(3000);// Toca o som por 3 segundos antes de interromper
-    clip.stop();
-    clip.close();
-}
-*/
+ File victory = new File("Pong_Sounds//victory-fanfare.wav"); //Adiciona o arquivo do áudio no código
+ 
+ Clip clip = AudioSystem.getClip();
+ clip.open(AudioSystem.getAudioInputStream(victory));
+ clip.start();
+ Thread.sleep(3000);// Toca o som por 3 segundos antes de interromper
+ clip.stop();
+ clip.close();
+ }
+ */
 
 void draw() { // main
+  if (myPort.available() > 0) {
+    pacote = myPort.readStringUntil('\n');
+
+    if (pacote != null) {
+      strBarra1 = "";
+      strBarra2 = "";
+      botao1 = "";
+      botao2 = "";
+
+      pacoteAberto = pacote.toCharArray();
+
+      for (int i = 0; i < pacote.length(); i++) {
+        if (pacoteAberto[i] == '-') {
+          seletor++;
+          i++;
+        }
+
+        if (seletor == 0) strBarra1 += pacoteAberto[i];
+        if (seletor == 1) strBarra2 += pacoteAberto[i];
+        if (seletor == 2) botao1 += pacoteAberto[i];
+        if (seletor == 3) botao2 += pacoteAberto[i];
+      }
+      println(botao1);
+      println(botao2);
+      println(strBarra1);
+      seletor = 0;
+    }
+  }
+
   switch (ordem) { // Ordena as cenas do jogo
   case 0:
     tela_inicial();
+    if (mousePressed || botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1) { // Caso pressione o mouse vai para as instruções
+      ordem = 2;
+    } //else if(){ }
     break;
   case 1:
     tela_instrucoes();
+    /*
+    if (mousePressed || botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1) { // Caso pressione o mouse vai para as instruções
+     ordem = 2;
+     }
+     */
     break;
   case 2:
     dinamico();
+    /*
+    if ((keyPressed && key == 'b') || botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1) {
+     tela_pause();
+     }
+     */
+    if (pontc1 == vencedor || pontc2 == vencedor) { //Analisando se o jogo acabou para acionar tela de fim
+      fim_jogo();
+    }
+
     break;
   case 3:
     tela_pause();
+    /*
+    if (mousePressed || botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1) { // Caso pressione o mouse vai para as instruções
+     ordem = 2;
+     }
+     */
     break;
   case 4:
     fim_jogo();
+
+    if (mousePressed && reset == 0) {
+      reset = 1;
+    }
+    if (!mousePressed && reset == 1) {
+      reset = 0;
+      ordem = 0;
+      barra_esquerda.local_y = height/2; //As barras começam no centro quando o jogo reinicia
+      barra_direita.local_y = height/2;
+    }
+
     break;
   }
 }
@@ -121,10 +183,6 @@ void tela_inicial() { // Primeira tela
   instrucoes.escreve("Instruções");
 
   //fazer a distinção de se vai para as intruções ou para o jogo
-
-  if (mousePressed) { // Caso pressione o mouse vai para as instruções
-    ordem = 2;
-  }
 }
 
 
@@ -163,39 +221,6 @@ void dinamico() { // Tela das movimentações principais do jogo
   b.checkpont();
   pontc1 = pont1 / 2;
   pontc2 = pont2 / 2; // Corrige a duplicação da pontuação
-
-
-  if (pontc1 == vencedor || pontc2 == vencedor) { //Analisando se o jogo acabou para acionar tela de fim
-    fim_jogo();
-  }
-  if (keyPressed) { //Aciona o pause apertando a tecla b
-    if (key == 'b') {
-      tela_pause();
-    }
-  }
-
-  if (myPort.available() > 0) {
-    pacote = myPort.readStringUntil('\n');
-
-    if (pacote != null) {
-      strBarra1 = "";
-      strBarra2 = "";
-
-      pacoteAberto = pacote.toCharArray();
-
-      for (int i = 0; i < pacote.length(); i++) {
-        if (pacoteAberto[i] == '-') {
-          seletor++;
-          i++;
-        }
-
-        if (seletor == 0) strBarra1 += pacoteAberto[i];
-        if (seletor == 1) strBarra2 += pacoteAberto[i];
-      }
-
-      seletor = 0;
-    }
-  }
 
   barra_esquerda.moverPot(int(strBarra1));
   barra_direita.moverPot(int(strBarra2));
@@ -238,14 +263,4 @@ void fim_jogo() { // função de fim de jogo
   voltar.escreve("Voltar a tela inicial");
 
   ordem = 4; // Mantem a tela final ativa
-
-  if (mousePressed && reset == 0) {
-    reset = 1;
-  }
-  if (!mousePressed && reset == 1) {
-    reset = 0;
-    ordem = 0;
-    barra_esquerda.local_y = height/2; //As barras começam no centro quando o jogo reinicia
-    barra_direita.local_y = height/2;
-  }
 }
