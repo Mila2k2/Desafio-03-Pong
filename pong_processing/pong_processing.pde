@@ -14,7 +14,7 @@ int vencedor = 2; // Quantidades de pontos para vencer/perder
 
 //Serial MyPort; // Comentar a variável para não usar comunicação serial
 bol b;
-bot b1, b2, b3, b4;
+bot b1, b2, b3, b4, b5, b6;
 barra barra_direita;
 barra barra_esquerda;
  
@@ -36,7 +36,13 @@ void setup(){
   rectMode(CENTER);
   
   b = new bol(); // Inicia o objeto bola
-  b1 = new bot(); b2 = new bot(); b3 = new bot(); b4 = new bot();
+  b1 = new bot(width/2, height/3 +100); 
+  b2 = new bot(width/2, height/3 + 250); 
+  b3 = new bot(width/2, height/2 +200); 
+  b4 = new bot(width/2, height/3 +100);
+  b5 = new bot(width/2, height/2 +150);
+  b6 = new bot(width/2, height/3 +200);
+  
   barra_direita = new barra(false);// falso pq é direita
   barra_esquerda = new barra(true);// verdadeiro pq é esquerda
   //MyPort = new Serial(this, portName, 9600);  // Comentar a variável para não usar comunicação serial
@@ -59,16 +65,7 @@ void draw(){ // main
       break;
     case 4:
       fim_jogo();
-      if(mousePressed && reset == 0){
-        reset = 1;
-      }
-      if(!mousePressed && reset == 1){
-        reset = 0;
-        ordem = 0;
-        barra_esquerda.local_y = height/2; //As barras começam no centro quando o jogo reinicia
-        barra_direita.local_y = height/2;
-      }
-        break;
+      break;
   }
 }
 
@@ -102,10 +99,9 @@ void tela_inicial(){ // Primeira tela
    textSize(height/6);
    fill(255); 
    text("POOng", width/2, height/3 -150); // Textos finais
-   
-   b1.escreve("Jogar",width/2, height/3 +100);
-   
-   b1.escreve("Instruções",width/2, height/3 + 250);
+   b1.select_bot();
+   b1.escreve("Jogar");
+   b2.escreve("Instruções");
    
    //fazer a distinção de se vai para as intruções ou para o jogo
    
@@ -128,7 +124,7 @@ void tela_instrucoes(){
     String n = "Utilize os botões grandes para controlar a sua barra e evite que a bola toque na parede!";
     text(n, width/2, height/2+50, width/2+100, height/2); 
 
-     b1.escreve("Jogar",width/2, height/2 +200);
+    b3.escreve("Jogar");
      
 }
 
@@ -191,8 +187,8 @@ void tela_pause(){ // Tela de pause do jogo
   fill(255);
   text("PAUSE", width/2, height/3 -200); // Textos de pause
   
-  b2.escreve("Retomar", width/2, height/3 +100);
-  b4.escreve("Reiniciar", width/2, height/2 +150);
+  b4.escreve("Retomar");
+  b5.escreve("Reiniciar");
   //text ();
   
   if (mousePressed){ // é para no futuro retomar o jogo
@@ -215,7 +211,17 @@ void fim_jogo(){ // função de fim de jogo
   text("Fim de jogo", width/2, height/3 -200); // Textos finais
   text(ganhou, width/2, height/3); // definindo o texto do vencedor
     
-  b3.escreve("Jogar novamente", width/2, height/3 +200);
+  b6.escreve("Jogar novamente");
  
   ordem = 4; // Mantem a tela final ativa
+  
+  if(mousePressed && reset == 0){
+    reset = 1;
+  }
+  if(!mousePressed && reset == 1){
+    reset = 0;
+    ordem = 0;
+    barra_esquerda.local_y = height/2; //As barras começam no centro quando o jogo reinicia
+    barra_direita.local_y = height/2;
+   }
 }
