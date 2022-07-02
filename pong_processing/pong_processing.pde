@@ -91,6 +91,7 @@ void draw() { // main
       println(botao1);
       println(botao2);
       println(strBarra1);
+      println(strBarra2);
       seletor = 0;
     }
   }
@@ -98,14 +99,14 @@ void draw() { // main
   switch (ordem) { // Ordena as cenas do jogo
   case 0:
     tela_inicial();
-    if (mousePressed || botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1) { // Caso pressione o mouse vai para as instruções
+    if (mousePressed || botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1) { 
       ordem = 2;
     } //else if(){ }
     break;
   case 1:
     tela_instrucoes();
     /*
-    if (mousePressed || botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1) { // Caso pressione o mouse vai para as instruções
+    if (mousePressed || botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1) { 
      ordem = 2;
      }
      */
@@ -133,7 +134,7 @@ void draw() { // main
   case 4:
     fim_jogo();
 
-    if (mousePressed && reset == 0) {
+    if ((mousePressed || botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1 ) && reset == 0) {
       reset = 1;
     }
     if (!mousePressed && reset == 1) {
