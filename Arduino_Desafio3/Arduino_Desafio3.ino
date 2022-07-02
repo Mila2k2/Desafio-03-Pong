@@ -1,17 +1,7 @@
-const int pot1 = A5;
-const int pot2 = A3;
-
-const int b02 = 8;
-const int b03 = 7;
-const int b04 = 6;
-
-int valor_pot1 = 0;
-int valor_pot2 = 0;
-
-bool v_b02;
-bool v_b03;
-bool v_b04;
-
+const int pot1 = A5, pot2 = A3; //Potenciometros
+const int b01 = 8, b02 = 7; // Botoes
+int v_pot1 = 0, v_pot2 = 0; //Valores dos potenciometros
+bool v_b01,v_b02; //Valores dos Botoes
 int arr[10];
 
 void setup() {
@@ -19,25 +9,22 @@ void setup() {
   pinMode(pot1, INPUT);
   pinMode(pot2, INPUT);
   
-  for(int i = 6; i <= 8; i++){
+  for(int i = 7; i <= 8; i++){
       pinMode(i, INPUT_PULLUP);
     }
 }
 
 void loop() {
-  valor_pot1 = map(analogRead(pot1),0,1023,0,255);
-  Serial.print(String(valor_pot1) + "-");
+  v_pot1 = map(analogRead(pot1),0,1023,0,255);
+  Serial.print(String(v_pot1) + "-");
   
-  valor_pot2 = map(analogRead(pot2),0,1023,0,255);
-  Serial.print(String(valor_pot2) + "-");
+  v_pot2 = map(analogRead(pot2),0,1023,0,255);
+  Serial.print(String(v_pot2) + "-");
   
+  v_b01 = !digitalRead(b01);
   v_b02 = !digitalRead(b02);
 
-  v_b03 = !digitalRead(b03);
-  v_b04 = !digitalRead(b04);
-
-  Serial.print(String(v_b02) + "-");
-  Serial.print(String(v_b03) + "-");
-  Serial.print(String(v_b04) + "\n");
+  Serial.print(String(v_b01) + "-");
+  Serial.print(String(v_b02) + "\n");
   delay(500);
 }
