@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.4.24)  2 JUL 2022 16:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.4.24)  2 JUL 2022 18:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1093,7 +1093,11 @@ Sidefoothsep and sidefootwidth: 7pt and 49pt
 Sidefootvsep and sidefootheight: 13.6pt and 594.32022pt
 ******************************************************
 
-(./modelo-artigo.aux)
+(./modelo-artigo.aux
+
+LaTeX Warning: Label `fig' multiply defined.
+
+)
 \openout1 = `modelo-artigo.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 184.
@@ -1115,8 +1119,7 @@ LaTeX Font Info:    ... okay on input line 184.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 184.
 LaTeX Font Info:    ... okay on input line 184.
 Package hyperref Info: Link coloring ON on input line 184.
-
-(c:/texlive/2022/texmf-dist/tex/latex/hyperref/nameref.sty
+ (c:/texlive/2022/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
 
 (c:/texlive/2022/texmf-dist/tex/latex/refcount/refcount.sty
@@ -1246,29 +1249,67 @@ File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10.95> on input line 9.
  [3])
-(./sections/04-results.tex) (./sections/05-conclusion.tex)
+(./sections/04-results.tex
+<source/pictures//tinkercad.png, id=38, 539.01375pt x 505.89pt>
+File: source/pictures//tinkercad.png Graphic file (type png)
+<use source/pictures//tinkercad.png>
+Package pdftex.def Info: source/pictures//tinkercad.png  used on input line 8.
+(pdftex.def)             Requested size: 216.81pt x 203.48714pt.
+ [4
+pdfTeX warning (ext4): destination with the same identifier (name{figure.0.2}) 
+has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.16 
+      <./source/pictures//tinkercad.png>]
+(c:/texlive/2022/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2020/03/24 1.8d listings language file
+)
+(c:/texlive/2022/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
+)
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
+7.
+
+(c:/texlive/2022/texmf-dist/tex/latex/lm/t1lmtt.fd
+File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `lmtt' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <9> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 18.
+)
+(./sections/05-conclusion.tex) [5]
 No file modelo-artigo.bbl.
-[4] [5] (./modelo-artigo.aux) ) 
+[6] (./modelo-artigo.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 30191 strings out of 478233
- 547548 string characters out of 5847836
- 1016495 words of memory out of 5000000
- 47803 multiletter control sequences out of 15000+600000
- 520075 words of font info for 106 fonts, out of 8000000 for 9000
+ 30785 strings out of 478233
+ 553733 string characters out of 5847836
+ 1340655 words of memory out of 5000000
+ 48339 multiletter control sequences out of 15000+600000
+ 524674 words of font info for 115 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 110i,11n,106p,1010b,354s stack positions out of 10000i,1000n,20000p,200000b,200000s
-{c:/texlive/2022/texmf-dist/fonts/enc/dvips/lm/l
-m-ec.enc}{c:/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{c:/texlive/2
-022/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}<c:/texlive/2022/texmf-dist/fonts/
-type1/public/lm/lmbx10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lm
-r10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/texlive
-/2022/texmf-dist/fonts/type1/public/lm/lmr17.pfb><c:/texlive/2022/texmf-dist/fo
-nts/type1/public/lm/lmr9.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/lm/
-lmss12.pfb>
-Output written on modelo-artigo.pdf (5 pages, 185538 bytes).
+ 110i,11n,106p,1010b,1393s stack positions out of 10000i,1000n,20000p,200000b,200000s
+{c:/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{c:/texlive/2022/tex
+mf-dist/fonts/enc/dvips/lm/lm-rm.enc}{c:/texlive/2022/texmf-dist/fonts/enc/dvip
+s/lm/lm-ts1.enc}<c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c
+:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/texlive/2022/texm
+f-dist/fonts/type1/public/lm/lmr12.pfb><c:/texlive/2022/texmf-dist/fonts/type1/
+public/lm/lmr17.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr7.pfb>
+<c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr9.pfb><c:/texlive/2022/tex
+mf-dist/fonts/type1/public/lm/lmss12.pfb><c:/texlive/2022/texmf-dist/fonts/type
+1/public/lm/lmtk10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmtt9.
+pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmtti10.pfb>
+Output written on modelo-artigo.pdf (6 pages, 335784 bytes).
 PDF statistics:
- 118 PDF objects out of 1000 (max. 8388607)
- 95 compressed objects within 1 object stream
- 20 named destinations out of 1000 (max. 500000)
- 30810 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 185 PDF objects out of 1000 (max. 8388607)
+ 150 compressed objects within 2 object streams
+ 53 named destinations out of 1000 (max. 500000)
+ 34911 words of extra memory for PDF output out of 35830 (max. 10000000)
 
