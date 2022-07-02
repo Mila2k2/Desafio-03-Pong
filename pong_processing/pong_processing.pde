@@ -1,4 +1,6 @@
 import processing.serial.*; // Comentar a variável para não usar comunicação serial
+import javax.sound.sampled.*; //Abre biblioteca que suporta áudios
+import java.io.File; //Biblioteca pra acessar os arquivos de áudio
 
 int v_b = 8; //Velocidade das barras
 
@@ -50,6 +52,18 @@ void setup() {
 
   myPort = new Serial(this, portName, 9600);  // Comentar a variável para não usar comunicação serial
 }
+/*
+void VictorySound(){ //Função do som do fim de jogo
+    File victory = new File("Pong_Sounds//victory-fanfare.wav"); //Adiciona o arquivo do áudio no código
+
+    Clip clip = AudioSystem.getClip();
+    clip.open(AudioSystem.getAudioInputStream(victory));
+    clip.start();
+    Thread.sleep(3000);// Toca o som por 3 segundos antes de interromper
+    clip.stop();
+    clip.close();
+}
+*/
 
 void draw() { // main
   switch (ordem) { // Ordena as cenas do jogo
