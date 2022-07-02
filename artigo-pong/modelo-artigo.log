@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.4.24)  1 JUL 2022 18:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.4.24)  2 JUL 2022 16:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1222,7 +1222,20 @@ Package microtype Info: Loading generic protrusion settings for font family
 (./sections/01-introduction.tex [1
 
 {c:/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]) (./sections/02
--desenvolvimento.tex)
+-desenvolvimento.tex
+<source/pictures//pong-exemplo.jpg, id=21, 592.2125pt x 296.10625pt>
+File: source/pictures//pong-exemplo.jpg Graphic file (type jpg)
+<use source/pictures//pong-exemplo.jpg>
+Package pdftex.def Info: source/pictures//pong-exemplo.jpg  used on input line 
+8.
+(pdftex.def)             Requested size: 216.81pt x 108.40544pt.
+ [2
+pdfTeX warning (ext4): destination with the same identifier (name{figure.0.1}) 
+has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.18 	
+       <./source/pictures//pong-exemplo.jpg>])
 (./sections/03-materials-and-methods.tex
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 8
 .
@@ -1232,30 +1245,30 @@ File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10.95> on input line 9.
- [2])
+ [3])
 (./sections/04-results.tex) (./sections/05-conclusion.tex)
 No file modelo-artigo.bbl.
-[3] (./modelo-artigo.aux) ) 
+[4] [5] (./modelo-artigo.aux) ) 
 Here is how much of TeX's memory you used:
- 30139 strings out of 478233
- 546758 string characters out of 5847836
- 1016401 words of memory out of 5000000
- 47777 multiletter control sequences out of 15000+600000
- 519245 words of font info for 96 fonts, out of 8000000 for 9000
+ 30191 strings out of 478233
+ 547548 string characters out of 5847836
+ 1016495 words of memory out of 5000000
+ 47803 multiletter control sequences out of 15000+600000
+ 520075 words of font info for 106 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 110i,11n,106p,1010b,474s stack positions out of 10000i,1000n,20000p,200000b,200000s
-{c:/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-ec
-.enc}{c:/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{c:/texlive/2022/
-texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}<c:/texlive/2022/texmf-dist/fonts/type
-1/public/lm/lmbx10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr10.
-pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/texlive/202
-2/texmf-dist/fonts/type1/public/lm/lmr17.pfb><c:/texlive/2022/texmf-dist/fonts/
-type1/public/lm/lmr9.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmss
-12.pfb>
-Output written on modelo-artigo.pdf (3 pages, 173649 bytes).
+ 110i,11n,106p,1010b,354s stack positions out of 10000i,1000n,20000p,200000b,200000s
+{c:/texlive/2022/texmf-dist/fonts/enc/dvips/lm/l
+m-ec.enc}{c:/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{c:/texlive/2
+022/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}<c:/texlive/2022/texmf-dist/fonts/
+type1/public/lm/lmbx10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lm
+r10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/texlive
+/2022/texmf-dist/fonts/type1/public/lm/lmr17.pfb><c:/texlive/2022/texmf-dist/fo
+nts/type1/public/lm/lmr9.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/lm/
+lmss12.pfb>
+Output written on modelo-artigo.pdf (5 pages, 185538 bytes).
 PDF statistics:
- 107 PDF objects out of 1000 (max. 8388607)
- 87 compressed objects within 1 object stream
- 17 named destinations out of 1000 (max. 500000)
- 30805 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 118 PDF objects out of 1000 (max. 8388607)
+ 95 compressed objects within 1 object stream
+ 20 named destinations out of 1000 (max. 500000)
+ 30810 words of extra memory for PDF output out of 35830 (max. 10000000)
 
