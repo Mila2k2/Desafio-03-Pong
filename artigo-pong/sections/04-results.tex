@@ -47,13 +47,62 @@ void loop() {
 }
 \end{lstlisting}
 
-	%% explicação do código
+	Além da declaração de variáveis, alguns recursos foram utilizados para saber por exemplo, se um botão estava sendo pressionado. Como ele está pinado em uma porta digital, é possivel utilizar uma propriedade chamada "INPUT\_PULLUP"	para fazer essa distinção. Isso ocorre já que o botão está conectado a um resistor de "Pull-Up", que está inbutido no Arduino UNO, e quando vemos a expressão abaixo, significa que essa resistência irá impactar naquele input quando acionado, atuando como um inversor, para assim se obter um nível lógico alto quando o botão é pressionado:
+
+\begin{lstlisting}[language=C]
+pinMode(i, INPUT_PULLUP);
+\end{lstlisting}
+
+	Outra lógica notável é que as informações a serem enviadas, dois associados aos potenciômetros e outros dos botões, serão colocadas em uma string única. Na função "loop" do Arduino, observa-se que é exatamente isso que está ocorrendo, criando uma string de modelo "[x-x-x-x]", que é um pacote de informações que será enviado ao processing, e lá será transformado em um vetor de caracteres, e a associação é feita utilizando um artefato chamado "this". Esse operador atribui um valor a uma classe, e essa única classe apenas, evitando que esta fosse para outra classe indesejada.
+
+\begin{lstlisting}[language=Java]
+class bot {
+  String frase = "";
+  int px, py;
+  float tamanho = 0;
+  int r = 0, g = 0, b = 0;
+  
+  void setColor(int r, int g, int b) {
+     this.r = r;
+     this.b = b;
+     this.g = g;
+  }
+
+  bot(int px, int py) {
+    this.px = px;
+    this.py = py;
+  }
+
+  void escreve(String frase) {
+    textSize(height/12.5);
+    tamanho = textWidth(frase);
+    
+    //fill(r,g,b);
+    fill(220, 80, 80);
+    rect(this.px, this.py+15, tamanho+50, 120, 28);
+    textAlign(CENTER, CENTER);
+
+    fill(0);
+    text (frase, this.px, this.py);
+  }
+
+  void select_bot() {
+    stroke(225);
+    fill(225, 225);
+    rect(px, py+15, tamanho+80, 80, 28);
+  }
+}
+\end{lstlisting}
+
+	%%explicação do uso do this aqui
+
+	%%explicação do código aqui
 
 	%% falar dos controles impressos 3D
-
-	%% código no processing
 
 	%% foto do Jogo
 
 
-
+%% dois fios para conectar um botão
+%% comunicação transformar um string em um array de caracteres e leu os valores individualmente
+%% precisava uma coisa chamada "this" como seletor restingir informações à uma classe

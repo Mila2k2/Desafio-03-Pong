@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.4.24)  2 JUL 2022 18:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.4.24)  3 JUL 2022 00:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1280,8 +1280,11 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <9> not available
 (Font)              Font shape `T1/lmtt/b/n' tried instead on input line 18.
-)
-(./sections/05-conclusion.tex) [5]
+
+(c:/texlive/2022/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2020/03/24 1.8d listings language file
+) [5])
+(./sections/05-conclusion.tex)
 No file modelo-artigo.bbl.
 [6] (./modelo-artigo.aux)
 
@@ -1289,27 +1292,27 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 30785 strings out of 478233
- 553733 string characters out of 5847836
- 1340655 words of memory out of 5000000
- 48339 multiletter control sequences out of 15000+600000
- 524674 words of font info for 115 fonts, out of 8000000 for 9000
+ 30916 strings out of 478233
+ 555383 string characters out of 5847836
+ 1385056 words of memory out of 5000000
+ 48413 multiletter control sequences out of 15000+600000
+ 525320 words of font info for 123 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 110i,11n,106p,1010b,1393s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 110i,12n,106p,1010b,2043s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {c:/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{c:/texlive/2022/tex
 mf-dist/fonts/enc/dvips/lm/lm-rm.enc}{c:/texlive/2022/texmf-dist/fonts/enc/dvip
 s/lm/lm-ts1.enc}<c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c
 :/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/texlive/2022/texm
 f-dist/fonts/type1/public/lm/lmr12.pfb><c:/texlive/2022/texmf-dist/fonts/type1/
 public/lm/lmr17.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr7.pfb>
-<c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr9.pfb><c:/texlive/2022/tex
-mf-dist/fonts/type1/public/lm/lmss12.pfb><c:/texlive/2022/texmf-dist/fonts/type
-1/public/lm/lmtk10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmtt9.
-pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmtti10.pfb>
-Output written on modelo-artigo.pdf (6 pages, 335784 bytes).
+<c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmss12.pfb><c:/texlive/2022/t
+exmf-dist/fonts/type1/public/lm/lmtk10.pfb><c:/texlive/2022/texmf-dist/fonts/ty
+pe1/public/lm/lmtt9.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmtti
+10.pfb>
+Output written on modelo-artigo.pdf (6 pages, 315432 bytes).
 PDF statistics:
- 185 PDF objects out of 1000 (max. 8388607)
- 150 compressed objects within 2 object streams
- 53 named destinations out of 1000 (max. 500000)
+ 227 PDF objects out of 1000 (max. 8388607)
+ 194 compressed objects within 2 object streams
+ 92 named destinations out of 1000 (max. 500000)
  34911 words of extra memory for PDF output out of 35830 (max. 10000000)
 
