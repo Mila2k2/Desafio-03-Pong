@@ -1,4 +1,5 @@
 import processing.serial.*; // Comentar a variável para não usar comunicação serial
+import java.util.Random;
 //import javax.sound.sampled.*; //Abre biblioteca que suporta áudios
 //import java.io.File; //Biblioteca pra acessar os arquivos de áudio
 
@@ -42,7 +43,7 @@ void setup() {
   rectMode(CENTER);
 
   b = new bol(); // Inicia o objeto bola
-
+  //Random random = new Random();
   jogar = new bot(width/2, height/3 +100);
   instrucoes = new bot(width/2, height/3 + 250);
   b3 = new bot(width/2, height/2 +200);
@@ -110,7 +111,7 @@ void draw() { // main
     tela_inicial();
     if (click == 1) { // Caso pressione o mouse vai para as instruções
       println("Click: ", click);
-      ordem = 3;
+      ordem = 2;
     } //else if(){ }
     break;
   case 1:
