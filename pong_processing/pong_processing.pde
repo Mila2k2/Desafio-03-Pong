@@ -105,7 +105,7 @@ void draw() { // main
 
     if (click == 1 && (botao1.indexOf('1') == -1) && (botao1.indexOf('1') == -1)) {
 
-      if (int(strBarra1) < 127 || int(strBarra2) < 127) {
+      if (int(strBarra1) > 127 || int(strBarra2) > 127) {
         click = 4;
         ordem = 2;
       } else {
@@ -192,7 +192,7 @@ void tela_inicial() { // Primeira tela
   if (pulsando == height/6 ) pulsando = height/7;
   else pulsando += 1;
 
-  if (int(strBarra1) < 127 || int(strBarra2) < 127) jogar.select_bot();
+  if (int(strBarra1) > 127 || int(strBarra2) > 127) jogar.select_bot();
   else instrucoes.select_bot();
 
   jogar.escreve("Jogar");
