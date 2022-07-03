@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.4.24)  3 JUL 2022 00:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.4.24)  3 JUL 2022 17:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1292,11 +1292,11 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 30916 strings out of 478233
- 555383 string characters out of 5847836
- 1385056 words of memory out of 5000000
+ 30908 strings out of 478233
+ 555299 string characters out of 5847836
+ 1385099 words of memory out of 5000000
  48413 multiletter control sequences out of 15000+600000
- 525320 words of font info for 123 fonts, out of 8000000 for 9000
+ 524988 words of font info for 119 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  110i,12n,106p,1010b,2043s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {c:/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{c:/texlive/2022/tex
@@ -1309,7 +1309,7 @@ public/lm/lmr17.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr7.pfb>
 exmf-dist/fonts/type1/public/lm/lmtk10.pfb><c:/texlive/2022/texmf-dist/fonts/ty
 pe1/public/lm/lmtt9.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmtti
 10.pfb>
-Output written on modelo-artigo.pdf (6 pages, 315432 bytes).
+Output written on modelo-artigo.pdf (6 pages, 315095 bytes).
 PDF statistics:
  227 PDF objects out of 1000 (max. 8388607)
  194 compressed objects within 2 object streams
