@@ -1,4 +1,4 @@
-const int pot1 = A5, pot2 = A3; //Potenciometros
+const int pot1 = A0, pot2 = A1; //Potenciometros
 const int b01 = 8, b02 = 7; // Botoes
 int v_pot1 = 0, v_pot2 = 0; //Valores dos potenciometros
 bool v_b01,v_b02; //Valores dos Botoes
@@ -26,5 +26,6 @@ void loop() {
 
   Serial.print(String(v_b01) + "-");
   Serial.print(String(v_b02) + "\n");
+  
   delay(50);
 }
