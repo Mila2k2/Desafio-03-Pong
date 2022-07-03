@@ -6,8 +6,7 @@ class bol { // Classe da bola
   int numero;
 
   bol() {
-    x = width/2;
-    y = height /2;
+    void angulo ();
   }
   void display() { // Desenha a bola
     stroke(0);
@@ -55,5 +54,14 @@ class bol { // Classe da bola
     if (y - r < yy + altura/2 && y + r > yy - altura/2 && x - r < xx + largura/2) { // condições para a bola recochetear
       xspeed *= -1; // inverter a velocidade da bola
     }
+  }
+  
+  void angulo (){
+    x = width/2;
+    y = height /2;
+    float angulo = random(TWO_PI); // Angulo aleatório enntre 2 e pi
+    xspeed = 8 * cos(angulo); // A velocidade é igual a 6 vezes o cosseno do angulo
+    yspeed = 6 * sin(angulo);
+  
   }
 }
