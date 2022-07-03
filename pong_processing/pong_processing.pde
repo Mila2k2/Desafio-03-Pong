@@ -9,7 +9,7 @@ int pulsando = 50;
 
 int pont1 = 0, pont2 = 0; // Pontuação dos jogadores
 int pontc1 = 0, pontc2 = 0; // Pontuação dos jogadores corrigida
-int vencedor = 2; // Quantidades de pontos para vencer/perder
+int vencedor = 6; // Quantidades de pontos para vencer/perder
 
 
 int click = 0;
@@ -90,8 +90,8 @@ void draw() { // main
         if (seletor == 2) botao1 += pacoteAberto[i];
         if (seletor == 3) botao2 += pacoteAberto[i];
       }
-      println(botao1);
-      //println(botao2);
+      println("Botão 1: ", botao1);
+      println("Botão 2: ", botao2);
       println(strBarra1);
       println(strBarra2);
       seletor = 0;
@@ -101,28 +101,27 @@ void draw() { // main
   switch (ordem) { // Ordena as cenas do jogo
   case 0:
     tela_inicial();
-    if (click == 0 && (botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1)) {
-      click = 1;
-    }
+    if (click == 0 && (botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1)) click = 1;
+    
     if (click == 1 && (botao1.indexOf('1') == -1) && (botao1.indexOf('1') == -1)) {
       click += 1;
-      ordem = 2;
+      ordem = 1;
     }
     break;
   case 1:
     tela_instrucoes();
-    /*
-    if (mousePressed || botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1) { // Caso pressione o mouse vai para as instruções
-     ordem = 2;
-     }
-     */
+    if (click == 2 && (botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1)) click = 3;
+    
+    if (click == 3 && (botao1.indexOf('1') == -1) && (botao1.indexOf('1') == -1)) {
+      click += 1;
+      ordem = 2;
+    }
     break;
   case 2:
     dinamico();
-    if (click == 2 && (botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1)) {
-      click = 3;
-    }
-    if (click == 3 && (botao1.indexOf('1') == -1) && (botao1.indexOf('1') == -1)) {
+    if (click == 4 && (botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1)) click = 5;
+    
+    if (click == 5 && (botao1.indexOf('1') == -1) && (botao1.indexOf('1') == -1)) {
       click += 1;
       ordem = 3;
     }
@@ -134,16 +133,19 @@ void draw() { // main
     break;
   case 3:
     tela_pause();
-    /*
-    if (mousePressed || botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1) { // Caso pressione o mouse vai para as instruções
-     ordem = 2;
-     }
-     */
+    if (click == 6 && (botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1)) click = 7;
+    
+    if (click == 7 && (botao1.indexOf('1') == -1) && (botao1.indexOf('1') == -1)) {
+      click = 4;
+      ordem = 2;
+    }
     break;
   case 4:
     fim_jogo();
-
-    if ((botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1) && reset == 0) {
+    if (click == 4 && (botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1)) click = 5;
+   
+    if (click == 5 && (botao1.indexOf('1') == -1) && (botao1.indexOf('1') == -1)) {
+      click = 0;
       reset = 1;
     }
     if (reset == 1) {
@@ -151,6 +153,7 @@ void draw() { // main
       ordem = 0;
       barra_esquerda.local_y = height/2; //As barras começam no centro quando o jogo reinicia
       barra_direita.local_y = height/2;
+      ordem = 0;
     }
 
     break;
