@@ -18,11 +18,6 @@ class barra {
     rect(local_x, local_y, largura, altura, 30);
   }
 
-  void mover(int veloy) {
-    local_y = local_y + veloy; //soma a posição inicial mais a velocidade
-    local_y = constrain(local_y, altura/2, height- altura/2); // restringe a movimentação em limites superiores e inferiores
-  }
-
   void moverPot(int pos) {
     if (pos != local_y) {
       local_y = map(pos, 0, 255, 100, height - 100);  // Potenciometro

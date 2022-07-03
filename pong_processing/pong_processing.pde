@@ -11,7 +11,7 @@ int pulsando = 50;
 
 int pont1 = 0, pont2 = 0; // Pontuação dos jogadores
 int pontc1 = 0, pontc2 = 0; // Pontuação dos jogadores corrigida
-int vencedor = 2; // Quantidades de pontos para vencer/perder
+int vencedor = 7; // Quantidades de pontos para vencer/perder
 
 
 int click = 0;
@@ -156,21 +156,6 @@ void draw() { // main
 
     break;
   }
-}
-
-void keyPressed() { // Move as barras com um limite inferior e superior
-  int v_b = 8; // velocidade da barra
-  if (keyCode == UP ) {
-    barra_direita.mover(-v_b);
-  } else if (keyCode == DOWN ) {
-    barra_direita.mover(v_b);
-  }
-  if (key == 'w') {
-    barra_esquerda.mover(-v_b);
-  } else if (key == 's' ) {
-    barra_esquerda.mover(v_b);
-  }
-  //Barras não sincronizadas devido a essa função so pegar uma tecla por vez
 }
 
 void meio() { // Desenha os traços no meio
