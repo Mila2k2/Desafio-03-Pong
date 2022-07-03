@@ -93,8 +93,9 @@ void draw() { // main
         if (seletor == 3) botao2 += pacoteAberto[i];
       }
       println(botao1);
-      println(botao2);
-      //println(strBarra1);
+      //println(botao2);
+      println(strBarra1);
+      println(strBarra2);
       seletor = 0;
     }
   }
@@ -109,7 +110,7 @@ void draw() { // main
     tela_inicial();
     if (click == 1) { // Caso pressione o mouse vai para as instruções
       println("Click: ", click);
-      dinamico();
+      ordem = 3;
     } //else if(){ }
     break;
   case 1:
@@ -192,7 +193,9 @@ void tela_inicial() { // Primeira tela
   text("PoOng", width/2, height/3 -150); // Textos finais
   delay(68);
   if (pulsando == height/6 ) pulsando = height/7; else pulsando += 1;
-  jogar.select_bot();
+  
+  if(int(strBarra1) > 127 || int(strBarra2) > 127) jogar.select_bot(); else instrucoes.select_bot();
+  
   jogar.escreve("Jogar");
   instrucoes.escreve("Instruções");
 
@@ -211,7 +214,8 @@ void tela_instrucoes() {
 
   String n = "Utilize os botões grandes para controlar a sua barra e evite que a bola toque na parede!";
   text(n, width/2, height/2+50, width/2+100, height/2);
-
+  
+  b3.select_bot();
   b3.escreve("Jogar");
 }
 
@@ -251,7 +255,8 @@ void tela_pause() { // Tela de pause do jogo
   textSize(height/6);
   fill(255);
   text("PAUSE", width/2, height/3 -200); // Textos de pause
-
+  
+  if(int(strBarra1) > 127 || int(strBarra2) > 127) retornar.select_bot(); else reiniciar.select_bot();
   retornar.escreve("Retornar");
   reiniciar.escreve("Reiniciar");
   //text ();
@@ -274,7 +279,8 @@ void fim_jogo() { // função de fim de jogo
   fill(255); // definindo a cor das letras como brancas
   text("Fim de jogo", width/2, height/3 -200); // Textos finais
   text(ganhou, width/2, height/3);
-
+  
+  voltar.select_bot();
   voltar.escreve("Voltar a tela inicial");
 
   ordem = 4; // Mantem a tela final ativa
