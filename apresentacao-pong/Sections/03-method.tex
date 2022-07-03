@@ -1,89 +1,52 @@
 %*----------- SLIDE -------------------------------------------------------------
-\begin{frame}[t]{As lideranças das equipes dos Novos Talentos}
-    \vspace{0.5cm}
-    \begin{columns}
-        \column{.01\textwidth}
-        \column{.7\textwidth}
-            \begin{itemize}
-                \item equipe \tikznode{cmark}{RAJA} será liderada por Aziel Freitas
-                \item equipe \Circled[outer color=mracula8, inner ysep=8pt]{BORG} será liderada por Mateus Cerqueira.
-                \item equipe \Circled[outer color=mracula7, inner ysep=8pt]{BORG} será liderada por Mateus Cerqueira.
-                \item equipe \Circled[outer color=mracula9, inner ysep=8pt]{jerotimon} será liderada por Mateus Cerqueira.
-                \item equipe TIMON-HM será liderada por Leonardo Lima.
-            \end{itemize}
-        \column{.29\textwidth}
-            \includegraphics[width=.9\textwidth, trim={10cm 0 10cm 0},clip]{equipe}
-    \end{columns}
-    \vspace{1cm}
-    
-    \emph{Para este desafio não será cobrado o relatório técnico, porém o acompanhamento deverá seguir o mesmo ritmo dos desafios anteriores.}
+\begin{frame}[t]{Etapas do projeto}
+   
+ \vspace{0.3cm}
+	\begin{itemize}
+		\item Prototipagem no TinkerCAD do Hardware;
+		\item Estabelecimento do envio de informação serial pelo Arduino;
+		\item Modelagem dos controles do jogo;
+		\item Primeiros passos da programação do jogo;
+		\item Testes do jogo utilizando o teclado
+		\item Recepção da informação serial no Processing;
+		\item Integração dos eletrônicos nos controles;
+		\item Finalização do código em Processing;
+		\item Troubleshooting;
+	\end{itemize}
+ 
+%*----------- notes
+    \note[item]{Notes can help you to remember important information. Turn on the notes option.}
+\end{frame}
+%-
+%*----------- SLIDE -------------------------------------------------------------
+\begin{frame}[t]{Materiais Necessários}
 
-    %add circle on word
-    \begin{tikzpicture}[remember picture,overlay]
-        \draw[mracula5,very thick] (cmark) circle[x radius=8mm,y radius=4mm]; 
-    \end{tikzpicture}
-%*----------- notes
-    \note[item]{Notes can help you to remember important information. Turn on the notes option.}
-\end{frame}
-%-
-%*----------- SLIDE -------------------------------------------------------------
-\begin{frame}[t]{O progresso das equipes}
-    Um dos indicadores para o acompanhamento das equipes será o percentual de conclusão geral da equipe.
-    O planejamento das atividades deverá seguir a metodologia aplicada no desenvolvimento de projetos de robótica.
-    \newline
-    %\vspace{0.5cm}
-    \begin{table}[ht!]
-    \centering
-        \caption{PERCENTUAL DE CONCLUSÃO POR EQUIPE}
-        \begin{tabular}{|l|c|c|c|c|} \hline
-            \textbf{EQUIPE}&\textbf{04/05}&\textbf{11/05}&\textbf{18/05}&\textbf{25/05}\\ \hline
-            RAJA & 17\% &32\% & &  \\ \hline
-            BORG & 0\% &41\% & &  \\ \hline
-            TIMON-HM & 5\% &47\% & &  \\ \hline
-        \end{tabular}
-    \end{table}
-%*----------- notes
-    \note[item]{Notes can help you to remember important information. Turn on the notes option.}
-\end{frame}
-%-
-%*----------- SLIDE -------------------------------------------------------------
-\begin{frame}[t]{O progresso das equipes}
-    Um dos indicadores para o acompanhamento das equipes será o percentual de conclusão geral da equipe.
-    O planejamento das atividades deverá seguir a metodologia aplicada no desenvolvimento de projetos de robótica.
-    \newline
-    %\vspace{0.5cm}
-    % \begin{table}[ht!]
-    % \centering
-    %     \caption{PERCENTUAL DE CONCLUSÃO POR EQUIPE}
-    %     \begin{tabular}{|l|c|c|c|c|} \hline
-    %         \textbf{EQUIPE}&\textbf{04/05}&\textbf{11/05}&\textbf{18/05}&\textbf{25/05}\\ \hline
-    %         RAJA & 17\% &32\% & &  \\ \hline
-    %         BORG & 0\% &41\% & &  \\ \hline
-    %         TIMON-HM & 5\% &47\% & &  \\ \hline
-    %     \end{tabular}
-    % \end{table}
-%*----------- notes
-    \note[item]{Notes can help you to remember important information. Turn on the notes option.}
-\end{frame}
-%-
-%*----------- SLIDE -------------------------------------------------------------
-\begin{frame}[t]{O progresso das equipes}
-    Um dos indicadores para o acompanhamento das equipes será o percentual de conclusão geral da equipe.
-    O planejamento das atividades deverá seguir a metodologia aplicada no desenvolvimento de projetos de robótica.
-    \newline
-    %\vspace{0.5cm}
-    % \begin{table}[ht!]
-    % \centering
-    %     \caption{PERCENTUAL DE CONCLUSÃO POR EQUIPE}
-    %     \begin{tabular}{|l|c|c|c|c|} \hline
-    %         \textbf{EQUIPE}&\textbf{04/05}&\textbf{11/05}&\textbf{18/05}&\textbf{25/05}\\ \hline
-    %         RAJA & 17\% &32\% & &  \\ \hline
-    %         BORG & 0\% &41\% & &  \\ \hline
-    %         TIMON-HM & 5\% &47\% & &  \\ \hline
-    %     \end{tabular}
-    % \end{table}
-    
-    \url{https://braziliansinrobotics.com/}
+\begin{columns}
+	% Column 1
+	\begin{column}{0.5\textwidth}
+        	\emph {Hardware}
+		\begin{itemize}
+			\item Fios conectores;
+			\item 3 Resistores de 1K$\Omega$;
+			\item 2 Botões com capa branca;
+			\item 2 Potenciômetros;
+			\item 2 cases impressas em 3D;
+			\item 1 Arduino UNO R3;
+			\item 1 Computador;
+		\end{itemize}
+	\end{column}
+	% Column 2    
+	\begin{column}{0.5\textwidth}
+   		\emph {Software}
+		\begin{itemize}
+			\item Visual Studio Code;
+			\item GitHub;
+			\item TinkerCad(C);
+			\item Processing; 
+		\end{itemize}
+	\end{column}
+\end{columns}
+
 %*----------- notes
     \note[item]{Notes can help you to remember important information. Turn on the notes option.}
 \end{frame}
