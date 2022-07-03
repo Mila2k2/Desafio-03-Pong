@@ -2,8 +2,6 @@ import processing.serial.*; // Comentar a variável para não usar comunicação
 //import javax.sound.sampled.*; //Abre biblioteca que suporta áudios
 //import java.io.File; //Biblioteca pra acessar os arquivos de áudio
 
-int v_b = 8; //Velocidade das barras
-
 int ordem = 0; // Chamada das telas
 String ganhou = ""; // Nome do jogador que ganhou (numero 1/ numero 2)
 int reset = 0;
@@ -11,11 +9,11 @@ int pulsando = 50;
 
 int pont1 = 0, pont2 = 0; // Pontuação dos jogadores
 int pontc1 = 0, pontc2 = 0; // Pontuação dos jogadores corrigida
-int vencedor = 7; // Quantidades de pontos para vencer/perder
+int vencedor = 2; // Quantidades de pontos para vencer/perder
 
 
 int click = 0;
-boolean stop = false;
+int stop = 0;
 
 //Serial MyPort; // Comentar a variável para não usar comunicação serial
 bol b;
@@ -41,7 +39,7 @@ void setup() {
   //fullScreen(); // Tamanho preenchendo a tela
   textAlign(CENTER, CENTER); //  Alianhmento do texto
   rectMode(CENTER);
-  
+
   b = new bol(); // Inicia o objeto bola
   jogar = new bot(width/2, height/3 +100);
   instrucoes = new bot(width/2, height/3 + 250);
@@ -69,7 +67,7 @@ void VictorySound(){ //Função do som do fim de jogo
  */
 
 void draw() { // main
-      
+
   if (myPort.available() > 0) {
     pacote = myPort.readStringUntil('\n');
 
@@ -100,18 +98,16 @@ void draw() { // main
     }
   }
 
-  if ( stop == false && (botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1)) {
-    click += 1;
-    stop = true;
-  }
-
   switch (ordem) { // Ordena as cenas do jogo
   case 0:
     tela_inicial();
-    if (click == 1) { // Caso pressione o mouse vai para as instruções
-      println("Click: ", click);
+    if (click == 0 && (botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1)) {
+      click = 1;
+    }
+    if (click == 1 && (botao1.indexOf('1') == -1) && (botao1.indexOf('1') == -1)) {
+      click += 1;
       ordem = 2;
-    } //else if(){ }
+    }
     break;
   case 1:
     tela_instrucoes();
@@ -123,9 +119,12 @@ void draw() { // main
     break;
   case 2:
     dinamico();
-    if (click == 2) {
+    if (click == 2 && (botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1)) {
+      click = 3;
+    }
+    if (click == 3 && (botao1.indexOf('1') == -1) && (botao1.indexOf('1') == -1)) {
+      click += 1;
       ordem = 3;
-      println(click);
     }
 
     if (pontc1 == vencedor || pontc2 == vencedor) { //Analisando se o jogo acabou para acionar tela de fim
@@ -147,7 +146,7 @@ void draw() { // main
     if ((botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1) && reset == 0) {
       reset = 1;
     }
-    if (!mousePressed && reset == 1) {
+    if (reset == 1) {
       reset = 0;
       ordem = 0;
       barra_esquerda.local_y = height/2; //As barras começam no centro quando o jogo reinicia
@@ -176,7 +175,6 @@ void tela_inicial() { // Primeira tela
 
   textSize(pulsando);
   text("PoOng", width/2, height/3 -150); // Textos finais
-  delay(68);
   if (pulsando == height/6 ) pulsando = height/7;
   else pulsando += 1;
 
@@ -235,7 +233,6 @@ void dinamico() { // Tela das movimentações principais do jogo
 }
 
 void tela_pause() { // Tela de pause do jogo
-  v_b = 0; // zera a velocidade das barras
 
   background(180, 0, 0);
   textSize(height/6);
@@ -248,9 +245,6 @@ void tela_pause() { // Tela de pause do jogo
   reiniciar.escreve("Reiniciar");
   //text ();
 
-  if (mousePressed) { // é para no futuro retomar o jogo
-    v_b = 8;
-  }
   ordem = 3; //Mantém tela pause
 }
 
