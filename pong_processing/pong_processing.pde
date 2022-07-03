@@ -102,16 +102,22 @@ void draw() { // main
   case 0:
     tela_inicial();
     if (click == 0 && (botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1)) click = 1;
-    
+
     if (click == 1 && (botao1.indexOf('1') == -1) && (botao1.indexOf('1') == -1)) {
-      click += 1;
-      ordem = 1;
+
+      if (int(strBarra1) < 127 || int(strBarra2) < 127) {
+        click = 4;
+        ordem = 2;
+      } else {
+        click += 1;
+        ordem = 1;
+      }
     }
     break;
   case 1:
     tela_instrucoes();
     if (click == 2 && (botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1)) click = 3;
-    
+
     if (click == 3 && (botao1.indexOf('1') == -1) && (botao1.indexOf('1') == -1)) {
       click += 1;
       ordem = 2;
@@ -120,7 +126,7 @@ void draw() { // main
   case 2:
     dinamico();
     if (click == 4 && (botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1)) click = 5;
-    
+
     if (click == 5 && (botao1.indexOf('1') == -1) && (botao1.indexOf('1') == -1)) {
       click += 1;
       ordem = 3;
@@ -134,16 +140,21 @@ void draw() { // main
   case 3:
     tela_pause();
     if (click == 6 && (botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1)) click = 7;
-    
+
     if (click == 7 && (botao1.indexOf('1') == -1) && (botao1.indexOf('1') == -1)) {
-      click = 4;
-      ordem = 2;
+      if (int(strBarra1) < 127 || int(strBarra2) < 127) {
+        click = 4;
+        ordem = 4;
+      } else {
+        click = 4;
+        ordem = 2;
+      }
     }
     break;
   case 4:
     fim_jogo();
     if (click == 4 && (botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1)) click = 5;
-   
+
     if (click == 5 && (botao1.indexOf('1') == -1) && (botao1.indexOf('1') == -1)) {
       click = 0;
       reset = 1;
@@ -181,7 +192,7 @@ void tela_inicial() { // Primeira tela
   if (pulsando == height/6 ) pulsando = height/7;
   else pulsando += 1;
 
-  if (int(strBarra1) > 127 || int(strBarra2) > 127) jogar.select_bot();
+  if (int(strBarra1) < 127 || int(strBarra2) < 127) jogar.select_bot();
   else instrucoes.select_bot();
 
   jogar.escreve("Jogar");
