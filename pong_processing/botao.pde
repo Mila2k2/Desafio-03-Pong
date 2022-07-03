@@ -18,7 +18,7 @@ class bot {
   void escreve(String frase) {
     textSize(height/12.5);
     tamanho = textWidth(frase);
-    
+    stroke(0);
     //fill(r,g,b);
     fill(220, 80, 80);
     rect(this.px, this.py+15, tamanho+50, 120, 28);
@@ -29,7 +29,7 @@ class bot {
   }
 
   void select_bot() {
-    stroke(225);
+    stroke(0);
     fill(225, 225);
     rect(px, py+15, tamanho+80, 80, 28);
   }

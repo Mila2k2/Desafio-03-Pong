@@ -1,4 +1,5 @@
 import processing.serial.*; // Comentar a variável para não usar comunicação serial
+import java.util.Random;
 //import javax.sound.sampled.*; //Abre biblioteca que suporta áudios
 //import java.io.File; //Biblioteca pra acessar os arquivos de áudio
 
@@ -7,11 +8,14 @@ int v_b = 8; //Velocidade das barras
 int ordem = 0; // Chamada das telas
 String ganhou = ""; // Nome do jogador que ganhou (numero 1/ numero 2)
 int reset = 0;
+int pulsando = 50;
 
 int pont1 = 0, pont2 = 0; // Pontuação dos jogadores
 int pontc1 = 0, pontc2 = 0; // Pontuação dos jogadores corrigida
 int vencedor = 2; // Quantidades de pontos para vencer/perder
 
+int click = 0;
+boolean stop = false;
 
 //Serial MyPort; // Comentar a variável para não usar comunicação serial
 bol b;
@@ -39,7 +43,7 @@ void setup() {
   rectMode(CENTER);
 
   b = new bol(); // Inicia o objeto bola
-
+  //Random random = new Random();
   jogar = new bot(width/2, height/3 +100);
   instrucoes = new bot(width/2, height/3 + 250);
   b3 = new bot(width/2, height/2 +200);
@@ -66,6 +70,7 @@ void VictorySound(){ //Função do som do fim de jogo
  */
 
 void draw() { // main
+
   if (myPort.available() > 0) {
     pacote = myPort.readStringUntil('\n');
 
@@ -89,37 +94,43 @@ void draw() { // main
         if (seletor == 3) botao2 += pacoteAberto[i];
       }
       println(botao1);
-      println(botao2);
+      //println(botao2);
       println(strBarra1);
       println(strBarra2);
       seletor = 0;
     }
   }
 
+  if ( stop == false && (botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1)) {
+    click += 1;
+    stop = true;
+  }
+
   switch (ordem) { // Ordena as cenas do jogo
   case 0:
     tela_inicial();
-    if (mousePressed || botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1) { 
+    if (click == 1) { // Caso pressione o mouse vai para as instruções
+      println("Click: ", click);
       ordem = 2;
     } //else if(){ }
     break;
   case 1:
     tela_instrucoes();
     /*
-    if (mousePressed || botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1) { 
+    if (mousePressed || botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1) { // Caso pressione o mouse vai para as instruções
      ordem = 2;
      }
      */
     break;
   case 2:
     dinamico();
-    /*
-    if ((keyPressed && key == 'b') || botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1) {
-     tela_pause();
-     }
-     */
+    if (click == 2) {
+      ordem = 3;
+      println(click);
+    }
+
     if (pontc1 == vencedor || pontc2 == vencedor) { //Analisando se o jogo acabou para acionar tela de fim
-      fim_jogo();
+      ordem = 4;
     }
 
     break;
@@ -134,7 +145,7 @@ void draw() { // main
   case 4:
     fim_jogo();
 
-    if ((mousePressed || botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1 ) && reset == 0) {
+    if ((botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1) && reset == 0) {
       reset = 1;
     }
     if (!mousePressed && reset == 1) {
@@ -178,12 +189,17 @@ void tela_inicial() { // Primeira tela
   background(200, 0, 0);
   textSize(height/6);
   fill(255);
-  text("POOng", width/2, height/3 -150); // Textos finais
-  jogar.select_bot();
+ 
+  textSize(pulsando);
+  text("PoOng", width/2, height/3 -150); // Textos finais
+  delay(68);
+  if (pulsando == height/6 ) pulsando = height/7; else pulsando += 1;
+  
+  if(int(strBarra1) > 127 || int(strBarra2) > 127) jogar.select_bot(); else instrucoes.select_bot();
+  
   jogar.escreve("Jogar");
   instrucoes.escreve("Instruções");
 
-  //fazer a distinção de se vai para as intruções ou para o jogo
 }
 
 
@@ -199,7 +215,8 @@ void tela_instrucoes() {
 
   String n = "Utilize os botões grandes para controlar a sua barra e evite que a bola toque na parede!";
   text(n, width/2, height/2+50, width/2+100, height/2);
-
+  
+  b3.select_bot();
   b3.escreve("Jogar");
 }
 
@@ -228,6 +245,8 @@ void dinamico() { // Tela das movimentações principais do jogo
 
   barra_esquerda.barra_inicio();
   barra_direita.barra_inicio();
+
+  ordem = 2;
 }
 
 void tela_pause() { // Tela de pause do jogo
@@ -237,7 +256,8 @@ void tela_pause() { // Tela de pause do jogo
   textSize(height/6);
   fill(255);
   text("PAUSE", width/2, height/3 -200); // Textos de pause
-
+  
+  if(int(strBarra1) > 127 || int(strBarra2) > 127) retornar.select_bot(); else reiniciar.select_bot();
   retornar.escreve("Retornar");
   reiniciar.escreve("Reiniciar");
   //text ();
@@ -259,8 +279,9 @@ void fim_jogo() { // função de fim de jogo
   textSize(height/10);
   fill(255); // definindo a cor das letras como brancas
   text("Fim de jogo", width/2, height/3 -200); // Textos finais
-  text(ganhou, width/2, height/3); // definindo o texto do vencedor
-
+  text(ganhou, width/2, height/3);
+  
+  voltar.select_bot();
   voltar.escreve("Voltar a tela inicial");
 
   ordem = 4; // Mantem a tela final ativa
