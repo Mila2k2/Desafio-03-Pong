@@ -13,15 +13,12 @@ int vencedor = 6; // Quantidades de pontos para vencer/perder
 
 
 int click = 0;
-int stop = 0;
 
-//Serial MyPort; // Comentar a variável para não usar comunicação serial
 bol b;
 bot jogar, instrucoes, b3, retornar, reiniciar, voltar;
 barra barra_direita;
 barra barra_esquerda;
 
-// Comentar as variáveis abaixo para não usar comunicação serial
 String portName = "COM5";
 Serial myPort;
 
@@ -142,7 +139,7 @@ void draw() { // main
     if (click == 6 && (botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1)) click = 7;
 
     if (click == 7 && (botao1.indexOf('1') == -1) && (botao1.indexOf('1') == -1)) {
-      if (int(strBarra1) < 127 || int(strBarra2) < 127) {
+      if (int(strBarra1) > 127 || int(strBarra2) > 127) {
         click = 4;
         ordem = 4;
       } else {
@@ -253,7 +250,7 @@ void tela_pause() { // Tela de pause do jogo
   fill(255);
   text("PAUSE", width/2, height/3 -200); // Textos de pause
 
-  if (int(strBarra1) > 127 || int(strBarra2) > 127) retornar.select_bot();
+  if (int(strBarra1) < 127 || int(strBarra2) < 127) retornar.select_bot();
   else reiniciar.select_bot();
   retornar.escreve("Retornar");
   reiniciar.escreve("Reiniciar");
