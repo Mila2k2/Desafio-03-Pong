@@ -1,8 +1,4 @@
 import processing.serial.*; // Comentar a variável para não usar comunicação serial
-//import javax.sound.sampled.*; //Abre biblioteca que suporta áudios
-//import java.io.File; //Biblioteca pra acessar os arquivos de áudio
-
-int v_b = 8; //Velocidade das barras
 
 int ordem = 0; // Chamada das telas
 String ganhou = ""; // Nome do jogador que ganhou (numero 1/ numero 2)
@@ -11,19 +7,16 @@ int pulsando = 50;
 
 int pont1 = 0, pont2 = 0; // Pontuação dos jogadores
 int pontc1 = 0, pontc2 = 0; // Pontuação dos jogadores corrigida
-int vencedor = 7; // Quantidades de pontos para vencer/perder
+int vencedor = 6; // Quantidades de pontos para vencer/perder
 
 
 int click = 0;
-boolean stop = false;
 
-//Serial MyPort; // Comentar a variável para não usar comunicação serial
 bol b;
 bot jogar, instrucoes, b3, retornar, reiniciar, voltar;
 barra barra_direita;
 barra barra_esquerda;
 
-// Comentar as variáveis abaixo para não usar comunicação serial
 String portName = "COM5";
 Serial myPort;
 
@@ -41,10 +34,10 @@ void setup() {
   //fullScreen(); // Tamanho preenchendo a tela
   textAlign(CENTER, CENTER); //  Alianhmento do texto
   rectMode(CENTER);
-  
+
   b = new bol(); // Inicia o objeto bola
-  jogar = new bot(width/2, height/3 +100);
-  instrucoes = new bot(width/2, height/3 + 250);
+  jogar = new bot(width/2, height/3 +125);
+  instrucoes = new bot(width/2, height/3 + 275);
   b3 = new bot(width/2, height/2 +200);
   retornar = new bot(width/2, height/3 +100);
   reiniciar = new bot(width/2, height/2 +150);
@@ -55,21 +48,9 @@ void setup() {
 
   myPort = new Serial(this, portName, 9600);  // Comentar a variável para não usar comunicação serial
 }
-/*
-void VictorySound(){ //Função do som do fim de jogo
- File victory = new File("Pong_Sounds//victory-fanfare.wav"); //Adiciona o arquivo do áudio no código
- 
- Clip clip = AudioSystem.getClip();
- clip.open(AudioSystem.getAudioInputStream(victory));
- clip.start();
- Thread.sleep(3000);// Toca o som por 3 segundos antes de interromper
- clip.stop();
- clip.close();
- }
- */
 
 void draw() { // main
-      
+
   if (myPort.available() > 0) {
     pacote = myPort.readStringUntil('\n');
 
@@ -92,40 +73,46 @@ void draw() { // main
         if (seletor == 2) botao1 += pacoteAberto[i];
         if (seletor == 3) botao2 += pacoteAberto[i];
       }
-      println(botao1);
-      //println(botao2);
+      println("Botão 1: ", botao1);
+      println("Botão 2: ", botao2);
       println(strBarra1);
       println(strBarra2);
       seletor = 0;
     }
   }
 
-  if ( stop == false && (botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1)) {
-    click += 1;
-    stop = true;
-  }
-
   switch (ordem) { // Ordena as cenas do jogo
   case 0:
     tela_inicial();
-    if (click == 1) { // Caso pressione o mouse vai para as instruções
-      println("Click: ", click);
-      ordem = 2;
-    } //else if(){ }
+    if (click == 0 && (botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1)) click = 1;
+    println("Click: ",click);
+    if (click == 1 && (botao1.indexOf('1') == -1) && (botao2.indexOf('1') == -1)) {
+    println("Click: ",click);
+      if (int(strBarra1) > 127 || int(strBarra2) > 127) {
+        click = 4;
+        ordem = 2;
+      } else {
+        click += 1;
+        ordem = 1;
+      }
+    }
     break;
   case 1:
     tela_instrucoes();
-    /*
-    if (mousePressed || botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1) { // Caso pressione o mouse vai para as instruções
-     ordem = 2;
-     }
-     */
+    if (click == 2 && (botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1)) click = 3;
+
+    if (click == 3 && (botao1.indexOf('1') == -1) && (botao2.indexOf('1') == -1)) {
+      click += 1;
+      ordem = 2;
+    }
     break;
   case 2:
     dinamico();
-    if (click == 2) {
+    if (click == 4 && (botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1)) click = 5;
+
+    if (click == 5 && (botao1.indexOf('1') == -1) && (botao2.indexOf('1') == -1)) {
+      click += 1;
       ordem = 3;
-      println(click);
     }
 
     if (pontc1 == vencedor || pontc2 == vencedor) { //Analisando se o jogo acabou para acionar tela de fim
@@ -135,23 +122,32 @@ void draw() { // main
     break;
   case 3:
     tela_pause();
-    /*
-    if (mousePressed || botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1) { // Caso pressione o mouse vai para as instruções
-     ordem = 2;
-     }
-     */
+    if (click == 6 && (botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1)) click = 7;
+
+    if (click == 7 && (botao1.indexOf('1') == -1) && (botao2.indexOf('1') == -1)) {
+      if (int(strBarra1) > 127 || int(strBarra2) > 127) {
+        click = 4;
+        ordem = 4;
+      } else {
+        click = 4;
+        ordem = 2;
+      }
+    }
     break;
   case 4:
     fim_jogo();
+    if (click == 4 && (botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1)) click = 5;
 
-    if ((botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1) && reset == 0) {
+    if (click == 5 && (botao1.indexOf('1') == -1) && (botao2.indexOf('1') == -1)) {
+      click = 0;
       reset = 1;
     }
-    if (!mousePressed && reset == 1) {
+    if (reset == 1) {
       reset = 0;
       ordem = 0;
       barra_esquerda.local_y = height/2; //As barras começam no centro quando o jogo reinicia
       barra_direita.local_y = height/2;
+      ordem = 0;
     }
 
     break;
@@ -176,7 +172,6 @@ void tela_inicial() { // Primeira tela
 
   textSize(pulsando);
   text("PoOng", width/2, height/3 -150); // Textos finais
-  delay(68);
   if (pulsando == height/6 ) pulsando = height/7;
   else pulsando += 1;
 
@@ -235,22 +230,18 @@ void dinamico() { // Tela das movimentações principais do jogo
 }
 
 void tela_pause() { // Tela de pause do jogo
-  v_b = 0; // zera a velocidade das barras
 
   background(180, 0, 0);
   textSize(height/6);
   fill(255);
   text("PAUSE", width/2, height/3 -200); // Textos de pause
 
-  if (int(strBarra1) > 127 || int(strBarra2) > 127) retornar.select_bot();
+  if (int(strBarra1) < 127 || int(strBarra2) < 127) retornar.select_bot();
   else reiniciar.select_bot();
   retornar.escreve("Retornar");
   reiniciar.escreve("Reiniciar");
   //text ();
 
-  if (mousePressed) { // é para no futuro retomar o jogo
-    v_b = 8;
-  }
   ordem = 3; //Mantém tela pause
 }
 
