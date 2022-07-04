@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.4.24)  3 JUL 2022 17:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.4.24)  3 JUL 2022 23:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1097,6 +1097,15 @@ Sidefootvsep and sidefootheight: 13.6pt and 594.32022pt
 
 LaTeX Warning: Label `fig' multiply defined.
 
+
+LaTeX Warning: Label `fig' multiply defined.
+
+
+LaTeX Warning: Label `fig' multiply defined.
+
+
+LaTeX Warning: Label `fig' multiply defined.
+
 )
 \openout1 = `modelo-artigo.aux'.
 
@@ -1253,15 +1262,10 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 <source/pictures//tinkercad.png, id=38, 539.01375pt x 505.89pt>
 File: source/pictures//tinkercad.png Graphic file (type png)
 <use source/pictures//tinkercad.png>
-Package pdftex.def Info: source/pictures//tinkercad.png  used on input line 8.
-(pdftex.def)             Requested size: 216.81pt x 203.48714pt.
- [4
-pdfTeX warning (ext4): destination with the same identifier (name{figure.0.2}) 
-has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.16 
-      <./source/pictures//tinkercad.png>]
+Package pdftex.def Info: source/pictures//tinkercad.png  used on input line 10.
+
+(pdftex.def)             Requested size: 144.54pt x 135.65808pt.
+
 (c:/texlive/2022/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 )
@@ -1269,7 +1273,7 @@ File: lstlang1.sty 2020/03/24 1.8d listings language file
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
 )
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
-7.
+9.
 
 (c:/texlive/2022/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
@@ -1279,26 +1283,67 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <9> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 18.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 20.
+ [4
+pdfTeX warning (ext4): destination with the same identifier (name{figure.0.2}) 
+has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.22 int 
+         v_pot1 = 0, v_pot2 = 0; //Valores dos potenciometros <./source/picture
+s//tinkercad.png>]
+<source/pictures//botão.png, id=54, 234.8775pt x 207.02344pt>
+File: source/pictures//botão.png Graphic file (type png)
+<use source/pictures//botão.png>
+Package pdftex.def Info: source/pictures//botão.png  used on input line 61.
+(pdftex.def)             Requested size: 144.54pt x 127.3992pt.
+<source/pictures//solda.jpeg, id=55, 831.105pt x 1477.52pt>
+File: source/pictures//solda.jpeg Graphic file (type jpg)
+<use source/pictures//solda.jpeg>
+Package pdftex.def Info: source/pictures//solda.jpeg  used on input line 69.
+(pdftex.def)             Requested size: 144.54pt x 256.94662pt.
+ [5
+pdfTeX warning (ext4): destination with the same identifier (name{figure.0.3}) 
+has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.79 	
+       <./source/pictures//botão.png>]
+<source/pictures//tela-inicial.jpeg, id=89, 1079.03125pt x 717.68124pt>
+File: source/pictures//tela-inicial.jpeg Graphic file (type jpg)
+<use source/pictures//tela-inicial.jpeg>
+Package pdftex.def Info: source/pictures//tela-inicial.jpeg  used on input line
+ 85.
+(pdftex.def)             Requested size: 216.81pt x 144.2017pt.
+) (./sections/05-conclusion.tex [6
+pdfTeX warning (ext4): destination with the same identifier (name{figure.0.4}) 
+has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.5 	A
+       comunicação entre o Arduino, que coleta as informações dos contro...
 
-(c:/texlive/2022/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2020/03/24 1.8d listings language file
-) [5])
-(./sections/05-conclusion.tex)
+pdfTeX warning (ext4): destination with the same identifier (name{figure.0.5}) 
+has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.5 	A
+       comunicação entre o Arduino, que coleta as informações dos contro...
+ <./source/pictures//solda.jpeg> <./source/pictures//tela-inicial.jpeg>])
 No file modelo-artigo.bbl.
-[6] (./modelo-artigo.aux)
+[7] (./modelo-artigo.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 30908 strings out of 478233
- 555299 string characters out of 5847836
- 1385099 words of memory out of 5000000
- 48413 multiletter control sequences out of 15000+600000
- 524988 words of font info for 119 fonts, out of 8000000 for 9000
+ 30829 strings out of 478233
+ 554657 string characters out of 5847836
+ 1335668 words of memory out of 5000000
+ 48363 multiletter control sequences out of 15000+600000
+ 525154 words of font info for 121 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 110i,12n,106p,1010b,2043s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 110i,12n,106p,1010b,2081s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {c:/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{c:/texlive/2022/tex
 mf-dist/fonts/enc/dvips/lm/lm-rm.enc}{c:/texlive/2022/texmf-dist/fonts/enc/dvip
 s/lm/lm-ts1.enc}<c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c
@@ -1309,10 +1354,10 @@ public/lm/lmr17.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr7.pfb>
 exmf-dist/fonts/type1/public/lm/lmtk10.pfb><c:/texlive/2022/texmf-dist/fonts/ty
 pe1/public/lm/lmtt9.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmtti
 10.pfb>
-Output written on modelo-artigo.pdf (6 pages, 315095 bytes).
+Output written on modelo-artigo.pdf (7 pages, 572530 bytes).
 PDF statistics:
- 227 PDF objects out of 1000 (max. 8388607)
- 194 compressed objects within 2 object streams
- 92 named destinations out of 1000 (max. 500000)
- 34911 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 200 PDF objects out of 1000 (max. 8388607)
+ 162 compressed objects within 2 object streams
+ 57 named destinations out of 1000 (max. 500000)
+ 34942 words of extra memory for PDF output out of 35830 (max. 10000000)
 
