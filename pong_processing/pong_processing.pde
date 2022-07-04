@@ -1,6 +1,4 @@
 import processing.serial.*; // Comentar a variável para não usar comunicação serial
-//import javax.sound.sampled.*; //Abre biblioteca que suporta áudios
-//import java.io.File; //Biblioteca pra acessar os arquivos de áudio
 
 int ordem = 0; // Chamada das telas
 String ganhou = ""; // Nome do jogador que ganhou (numero 1/ numero 2)
@@ -38,8 +36,8 @@ void setup() {
   rectMode(CENTER);
 
   b = new bol(); // Inicia o objeto bola
-  jogar = new bot(width/2, height/3 +100);
-  instrucoes = new bot(width/2, height/3 + 250);
+  jogar = new bot(width/2, height/3 +125);
+  instrucoes = new bot(width/2, height/3 + 275);
   b3 = new bot(width/2, height/2 +200);
   retornar = new bot(width/2, height/3 +100);
   reiniciar = new bot(width/2, height/2 +150);
@@ -50,18 +48,6 @@ void setup() {
 
   myPort = new Serial(this, portName, 9600);  // Comentar a variável para não usar comunicação serial
 }
-/*
-void VictorySound(){ //Função do som do fim de jogo
- File victory = new File("Pong_Sounds//victory-fanfare.wav"); //Adiciona o arquivo do áudio no código
- 
- Clip clip = AudioSystem.getClip();
- clip.open(AudioSystem.getAudioInputStream(victory));
- clip.start();
- Thread.sleep(3000);// Toca o som por 3 segundos antes de interromper
- clip.stop();
- clip.close();
- }
- */
 
 void draw() { // main
 
@@ -99,9 +85,9 @@ void draw() { // main
   case 0:
     tela_inicial();
     if (click == 0 && (botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1)) click = 1;
-
-    if (click == 1 && (botao1.indexOf('1') == -1) && (botao1.indexOf('1') == -1)) {
-
+    println("Click: ",click);
+    if (click == 1 && (botao1.indexOf('1') == -1) && (botao2.indexOf('1') == -1)) {
+    println("Click: ",click);
       if (int(strBarra1) > 127 || int(strBarra2) > 127) {
         click = 4;
         ordem = 2;
@@ -115,7 +101,7 @@ void draw() { // main
     tela_instrucoes();
     if (click == 2 && (botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1)) click = 3;
 
-    if (click == 3 && (botao1.indexOf('1') == -1) && (botao1.indexOf('1') == -1)) {
+    if (click == 3 && (botao1.indexOf('1') == -1) && (botao2.indexOf('1') == -1)) {
       click += 1;
       ordem = 2;
     }
@@ -124,7 +110,7 @@ void draw() { // main
     dinamico();
     if (click == 4 && (botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1)) click = 5;
 
-    if (click == 5 && (botao1.indexOf('1') == -1) && (botao1.indexOf('1') == -1)) {
+    if (click == 5 && (botao1.indexOf('1') == -1) && (botao2.indexOf('1') == -1)) {
       click += 1;
       ordem = 3;
     }
@@ -138,7 +124,7 @@ void draw() { // main
     tela_pause();
     if (click == 6 && (botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1)) click = 7;
 
-    if (click == 7 && (botao1.indexOf('1') == -1) && (botao1.indexOf('1') == -1)) {
+    if (click == 7 && (botao1.indexOf('1') == -1) && (botao2.indexOf('1') == -1)) {
       if (int(strBarra1) > 127 || int(strBarra2) > 127) {
         click = 4;
         ordem = 4;
@@ -152,7 +138,7 @@ void draw() { // main
     fim_jogo();
     if (click == 4 && (botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1)) click = 5;
 
-    if (click == 5 && (botao1.indexOf('1') == -1) && (botao1.indexOf('1') == -1)) {
+    if (click == 5 && (botao1.indexOf('1') == -1) && (botao2.indexOf('1') == -1)) {
       click = 0;
       reset = 1;
     }
