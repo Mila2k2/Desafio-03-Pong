@@ -85,9 +85,9 @@ void draw() { // main
   case 0:
     tela_inicial();
     if (click == 0 && (botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1)) click = 1;
-    println("Click: ",click);
+
     if (click == 1 && (botao1.indexOf('1') == -1) && (botao2.indexOf('1') == -1)) {
-    println("Click: ",click);
+
       if (int(strBarra1) > 127 || int(strBarra2) > 127) {
         click = 4;
         ordem = 2;
@@ -160,6 +160,10 @@ void meio() { // Desenha os traços no meio
     rect(width/2, i, 2, 35);
     i += 35;
   }
+
+  if (pontc1 >= 2 || pontc1 >= 2) {
+    rect(width/2, height/2, 15, 100, 30);
+  }
 }
 
 void tela_inicial() { // Primeira tela
@@ -202,8 +206,10 @@ void tela_instrucoes() {
 
 
 void dinamico() { // Tela das movimentações principais do jogo
-  background(180, 0, 0); // Cor do fundo
+
+  background(180, 0, 0);
   meio(); // Desenha traços do meio
+
   fill(255);
   textSize(100);
   text(pontc1, width/4, 100); // Mostra as pontuacoes alinhadas
@@ -236,10 +242,10 @@ void tela_pause() { // Tela de pause do jogo
   fill(255);
   text("PAUSE", width/2, height/3 -200); // Textos de pause
 
-  if (int(strBarra1) < 127 || int(strBarra2) < 127) retornar.select_bot();
+  if (int(strBarra1) > 127 || int(strBarra2) > 127) retornar.select_bot();
   else reiniciar.select_bot();
-  retornar.escreve("Retornar");
-  reiniciar.escreve("Reiniciar");
+  retornar.escreve("Reiniciar");
+  reiniciar.escreve("Retornar");
   //text ();
 
   ordem = 3; //Mantém tela pause

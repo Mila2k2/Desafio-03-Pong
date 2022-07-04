@@ -3,10 +3,8 @@ class bol { // Classe da bola
   float x, y; // Posicao da bola
   float xspeed = 5, yspeed = 2.3; //  Velocidade da bola
   float r = 14; //raio da bola
-  int numero;
 
   bol() {
-    //angulo();
     x = width/2;
     y = height /2;
   }
@@ -27,6 +25,7 @@ class bol { // Classe da bola
     if (y > height || y < 0) {
       yspeed = yspeed * (-1);
     }
+    
   }
 
   void checkpont() { // Aumenta a pontuação dos jogadores
@@ -57,13 +56,4 @@ class bol { // Classe da bola
       xspeed *= -1; // inverter a velocidade da bola
     }
   }
-  /*
-  void angulo () {
-    x = width/2;
-    y = height /2;
-    float angulo = random(TWO_PI); // Angulo aleatório enntre 2 e pi
-    xspeed = 8 * cos(angulo); // A velocidade é igual a 6 vezes o cosseno do angulo
-    yspeed = 6 * sin(angulo);
-  }
-  */
 }
