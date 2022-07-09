@@ -1,4 +1,5 @@
-import processing.serial.*; // Comentar a variável para não usar comunicação serial
+import processing.serial.*; 
+import processing.sound.*;
 
 int ordem = 0; // Chamada das telas
 String ganhou = ""; // Nome do jogador que ganhou (numero 1/ numero 2)
@@ -28,6 +29,7 @@ int seletor = 0;
 String strBarra1 = "", strBarra2 = "";
 String botao1 = "", botao2 = "";
 
+SoundFile music;
 
 void setup() {
   size(1080, 720); //Tamanho da tela
@@ -46,44 +48,19 @@ void setup() {
   barra_direita = new barra(false);// falso pq é direita
   barra_esquerda = new barra(true);// verdadeiro pq é esquerda
 
-  myPort = new Serial(this, portName, 9600);  // Comentar a variável para não usar comunicação serial
+  myPort = new Serial(this, portName, 9600);  
+  
+  music = new SoundFile(this, "assets/adventure.mp3");
 }
 
 void draw() { // main
-
-  if (myPort.available() > 0) {
-    pacote = myPort.readStringUntil('\n');
-
-    if (pacote != null) {
-      strBarra1 = "";
-      strBarra2 = "";
-      botao1 = "";
-      botao2 = "";
-
-      pacoteAberto = pacote.toCharArray();
-
-      for (int i = 0; i < pacote.length(); i++) {
-        if (pacoteAberto[i] == '-') {
-          seletor++;
-          i++;
-        }
-
-        if (seletor == 0) strBarra1 += pacoteAberto[i];
-        if (seletor == 1) strBarra2 += pacoteAberto[i];
-        if (seletor == 2) botao1 += pacoteAberto[i];
-        if (seletor == 3) botao2 += pacoteAberto[i];
-      }
-      println("Botão 1: ", botao1);
-      println("Botão 2: ", botao2);
-      println(strBarra1);
-      println(strBarra2);
-      seletor = 0;
-    }
-  }
-
+  
+  comunicacao();
+  
   switch (ordem) { // Ordena as cenas do jogo
   case 0:
     tela_inicial();
+    //music.play();
     if (click == 0 && (botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1)) click = 1;
 
     if (click == 1 && (botao1.indexOf('1') == -1) && (botao2.indexOf('1') == -1)) {
@@ -151,6 +128,38 @@ void draw() { // main
     }
 
     break;
+  }
+}
+
+void comunicacao() {
+  if (myPort.available() > 0) {
+    pacote = myPort.readStringUntil('\n');
+
+    if (pacote != null) {
+      strBarra1 = "";
+      strBarra2 = "";
+      botao1 = "";
+      botao2 = "";
+
+      pacoteAberto = pacote.toCharArray();
+
+      for (int i = 0; i < pacote.length(); i++) {
+        if (pacoteAberto[i] == '-') {
+          seletor++;
+          i++;
+        }
+
+        if (seletor == 0) strBarra1 += pacoteAberto[i];
+        if (seletor == 1) strBarra2 += pacoteAberto[i];
+        if (seletor == 2) botao1 += pacoteAberto[i];
+        if (seletor == 3) botao2 += pacoteAberto[i];
+      }
+      println("Botão 1: ", botao1);
+      println("Botão 2: ", botao2);
+      println(strBarra1);
+      println(strBarra2);
+      seletor = 0;
+    }
   }
 }
 
