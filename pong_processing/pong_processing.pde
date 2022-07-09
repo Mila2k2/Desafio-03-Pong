@@ -1,4 +1,4 @@
-import processing.serial.*; 
+import processing.serial.*;
 import processing.sound.*;
 
 int ordem = 0; // Chamada das telas
@@ -29,7 +29,9 @@ int seletor = 0;
 String strBarra1 = "", strBarra2 = "";
 String botao1 = "", botao2 = "";
 
-SoundFile music;
+SoundFile menu;
+SoundFile jogo;
+SoundFile vitoria;
 
 void setup() {
   size(1080, 720); //Tamanho da tela
@@ -48,19 +50,20 @@ void setup() {
   barra_direita = new barra(false);// falso pq é direita
   barra_esquerda = new barra(true);// verdadeiro pq é esquerda
 
-  myPort = new Serial(this, portName, 9600);  
-  
-  music = new SoundFile(this, "assets/adventure.mp3");
+  myPort = new Serial(this, portName, 9600);
+
+  menu = new SoundFile(this, "musicas/adventure.mp3");
+  jogo = new SoundFile(this, "musicas/boss-fight.mp3");
+  vitoria = new SoundFile(this, "musicas/vitoria.mp3");
 }
 
 void draw() { // main
-  
+
   comunicacao();
-  
+
   switch (ordem) { // Ordena as cenas do jogo
   case 0:
     tela_inicial();
-    //music.play();
     if (click == 0 && (botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1)) click = 1;
 
     if (click == 1 && (botao1.indexOf('1') == -1) && (botao2.indexOf('1') == -1)) {
@@ -179,6 +182,12 @@ void tela_inicial() { // Primeira tela
   pont1 = 0;
   pont2 = 0;
 
+  if (!menu.isPlaying()) {
+    menu.play();
+    jogo.stop();
+    vitoria.stop();
+  }
+
   background(200, 0, 0);
   textSize(height/6);
   fill(255);
@@ -216,6 +225,11 @@ void tela_instrucoes() {
 
 void dinamico() { // Tela das movimentações principais do jogo
 
+  if (!jogo.isPlaying()) {
+    jogo.play();
+    menu.stop();
+  }
+
   background(180, 0, 0);
   meio(); // Desenha traços do meio
 
@@ -246,6 +260,11 @@ void dinamico() { // Tela das movimentações principais do jogo
 
 void tela_pause() { // Tela de pause do jogo
 
+  if (!menu.isPlaying()) {
+    menu.play();
+    jogo.stop();
+  }
+
   background(180, 0, 0);
   textSize(height/6);
   fill(255);
@@ -262,6 +281,13 @@ void tela_pause() { // Tela de pause do jogo
 
 
 void fim_jogo() { // função de fim de jogo
+
+  if (!vitoria.isPlaying()) {
+    vitoria.play();
+    menu.stop();
+    jogo.stop();
+  }
+  
   if (pontc2 == vencedor) { //definindo vencedor como um lado
     ganhou = "Lado esquerdo é o vencedor!";
   } else if (pontc1 == vencedor) { //definindo vencedor como um  outro lado
