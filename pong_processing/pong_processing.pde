@@ -3,7 +3,6 @@ import processing.sound.*; //Biblioteca para som
 
 int ordem = 0; // Chamada das telas
 String ganhou = ""; // Nome do jogador que ganhou (Direita/ Esquerda)
-int reset = 0; //
 int pulsando = 50;
 
 int pont1 = 0, pont2 = 0; // Pontuação dos jogadores
@@ -121,7 +120,6 @@ void draw() { // main
 
     if (click == 5 && (botao1.indexOf('1') == -1) && (botao2.indexOf('1') == -1)) {
       click = 0;
-      reset = 0;
       ordem = 0;
       barra_esquerda.local_y = height/2; //As barras começam no centro quando o jogo reinicia
       barra_direita.local_y = height/2;
