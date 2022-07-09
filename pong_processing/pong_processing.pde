@@ -10,7 +10,9 @@ int pontc1 = 0, pontc2 = 0; // Pontuação dos jogadores corrigida
 int vencedor = 6; // Quantidades de pontos para vencer/perder
 
 
-int click = 0; // Registra Clicks dos botões do arduino
+int click = -1; // Registra Clicks dos botões do arduino
+boolean estado = false;
+
 
 bol b; // Objeto bola
 bot jogar, instrucoes, b3, retornar, reiniciar, voltar; // Objetos botões
@@ -63,37 +65,26 @@ void draw() { // main
   switch (ordem) { // Ordena as cenas do jogo
   case 0:
     tela_inicial();
-    if (click == 0 && (botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1)) click = 1;
-
-    if (click == 1 && (botao1.indexOf('1') == -1) && (botao2.indexOf('1') == -1)) {
-
+    if (click == 1) {
       if (int(strBarra1) > 127 || int(strBarra2) > 127) {
-        click = 4;
         ordem = 2;
-      } else {
         click += 1;
+      } else {
         ordem = 1;
       }
     }
     break;
   case 1:
     tela_instrucoes();
-    if (click == 2 && (botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1)) click = 3;
-
-    if (click == 3 && (botao1.indexOf('1') == -1) && (botao2.indexOf('1') == -1)) {
-      click += 1;
+    if (click == 2) {
       ordem = 2;
     }
     break;
   case 2:
     dinamico();
-    if (click == 4 && (botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1)) click = 5;
-
-    if (click == 5 && (botao1.indexOf('1') == -1) && (botao2.indexOf('1') == -1)) {
-      click += 1;
+    if (click == 3) {
       ordem = 3;
     }
-
     if (pontc1 == vencedor || pontc2 == vencedor) { //Analisando se o jogo acabou para acionar tela de fim
       ordem = 4;
     }
@@ -101,23 +92,18 @@ void draw() { // main
     break;
   case 3:
     tela_pause();
-    if (click == 6 && (botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1)) click = 7;
-
-    if (click == 7 && (botao1.indexOf('1') == -1) && (botao2.indexOf('1') == -1)) {
+    if (click == 4) {
       if (int(strBarra1) > 127 || int(strBarra2) > 127) {
-        click = 4;
         ordem = 4;
       } else {
-        click = 4;
+        click = 2;
         ordem = 2;
       }
     }
     break;
   case 4:
     fim_jogo();
-    if (click == 4 && (botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1)) click = 5;
-
-    if (click == 5 && (botao1.indexOf('1') == -1) && (botao2.indexOf('1') == -1)) {
+    if (click == 5) {
       click = 0;
       ordem = 0;
       barra_esquerda.local_y = height/2; //As barras começam no centro quando o jogo reinicia
@@ -156,6 +142,12 @@ void comunicacao() {
       seletor = 0; // Reseta o seletor
     }
   }
+
+  if (botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1) estado = true;
+  if (estado == true && (botao1.indexOf('1') == -1) && (botao2.indexOf('1') == -1)) {
+    click += 1;
+    estado = false;
+  }
 }
 
 void meio() { // Desenha os traços no meio
@@ -186,7 +178,7 @@ void tela_inicial() { // Primeira tela
 
   textSize(pulsando);
   text("PoOng", width/2, height/3 -150); // Escreve o título
-  
+
   if (pulsando == height/6 ) pulsando = height/7; // Muda o tamanho do título
   else pulsando += 1;
 
@@ -199,7 +191,7 @@ void tela_inicial() { // Primeira tela
 
 
 void tela_instrucoes() { // Tela de instruções do jogo
-  background(170, 10, 30); 
+  background(170, 10, 30);
   textSize(height/25); // Define o tamanho do texto
   fill(255);
 
@@ -265,7 +257,7 @@ void tela_pause() { // Tela de pause do jogo
 
   if (int(strBarra1) > 127 || int(strBarra2) > 127) retornar.select_bot(); //Seleção dos botões
   else reiniciar.select_bot();
-  
+
   retornar.escreve("Reiniciar"); //Escreve o texto no botão
   reiniciar.escreve("Retornar");
 
