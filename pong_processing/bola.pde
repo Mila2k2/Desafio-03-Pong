@@ -4,10 +4,11 @@ class bol { // Classe da bola
   float xspeed = 5, yspeed = 2.3; //  Velocidade da bola
   float r = 14; //raio da bola
 
-  bol() {
+  bol() { // Inicia x e y no meio
     x = width/2;
     y = height /2;
   }
+  
   void display() { // Desenha a bola
     stroke(0);
     ellipse(x, y, 28, 28);
@@ -28,7 +29,7 @@ class bol { // Classe da bola
     
   }
 
-  void checkpont() { // Aumenta a pontuação dos jogadores
+  void checkpont() { // Aumenta a pontuação dos jogadores se bater na parede esquerda ou direita
     if (x == 0) {
       pont1 += 2;
 
