@@ -1,9 +1,9 @@
-import processing.serial.*;
-import processing.sound.*;
+import processing.serial.*; //Biblioteca para comunicação serial
+import processing.sound.*; //Biblioteca para som
 
 int ordem = 0; // Chamada das telas
-String ganhou = ""; // Nome do jogador que ganhou (numero 1/ numero 2)
-int reset = 0;
+String ganhou = ""; // Nome do jogador que ganhou (Direita/ Esquerda)
+int reset = 0; //
 int pulsando = 50;
 
 int pont1 = 0, pont2 = 0; // Pontuação dos jogadores
@@ -40,6 +40,7 @@ void setup() {
   rectMode(CENTER);
 
   b = new bol(); // Inicia o objeto bola
+
   jogar = new bot(width/2, height/3 +125);
   instrucoes = new bot(width/2, height/3 + 275);
   b3 = new bot(width/2, height/2 +200);
@@ -120,9 +121,6 @@ void draw() { // main
 
     if (click == 5 && (botao1.indexOf('1') == -1) && (botao2.indexOf('1') == -1)) {
       click = 0;
-      reset = 1;
-    }
-    if (reset == 1) {
       reset = 0;
       ordem = 0;
       barra_esquerda.local_y = height/2; //As barras começam no centro quando o jogo reinicia
@@ -157,10 +155,7 @@ void comunicacao() {
         if (seletor == 2) botao1 += pacoteAberto[i];
         if (seletor == 3) botao2 += pacoteAberto[i];
       }
-      println("Botão 1: ", botao1);
-      println("Botão 2: ", botao2);
-      println(strBarra1);
-      println(strBarra2);
+
       seletor = 0;
     }
   }
@@ -287,7 +282,7 @@ void fim_jogo() { // função de fim de jogo
     menu.stop();
     jogo.stop();
   }
-  
+
   if (pontc2 == vencedor) { //definindo vencedor como um lado
     ganhou = "Lado esquerdo é o vencedor!";
   } else if (pontc1 == vencedor) { //definindo vencedor como um  outro lado
