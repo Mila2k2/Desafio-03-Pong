@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.4.24)  3 JUL 2022 23:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.4.24)  4 JUL 2022 03:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1307,41 +1307,91 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.0.3})
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.79 	
+l.81 	
        <./source/pictures//botão.png>]
-<source/pictures//tela-inicial.jpeg, id=89, 1079.03125pt x 717.68124pt>
-File: source/pictures//tela-inicial.jpeg Graphic file (type jpg)
-<use source/pictures//tela-inicial.jpeg>
-Package pdftex.def Info: source/pictures//tela-inicial.jpeg  used on input line
- 85.
-(pdftex.def)             Requested size: 216.81pt x 144.2017pt.
-) (./sections/05-conclusion.tex [6
+<source/pictures//evolucao.PNG, id=89, 987.69pt x 298.11375pt>
+File: source/pictures//evolucao.PNG Graphic file (type png)
+<use source/pictures//evolucao.PNG>
+Package pdftex.def Info: source/pictures//evolucao.PNG  used on input line 87.
+(pdftex.def)             Requested size: 361.34999pt x 109.06306pt.
+ [6
 pdfTeX warning (ext4): destination with the same identifier (name{figure.0.4}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.5 	A
-       comunicação entre o Arduino, que coleta as informações dos contro...
-
+l.105  
+        text("PoOng", width/2, height/3 -150); // Textos finais
 pdfTeX warning (ext4): destination with the same identifier (name{figure.0.5}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.5 	A
-       comunicação entre o Arduino, que coleta as informações dos contro...
- <./source/pictures//solda.jpeg> <./source/pictures//tela-inicial.jpeg>])
+l.105  
+        text("PoOng", width/2, height/3 -150); // Textos finais <./source/pictu
+res//solda.jpeg> <./source/pictures//evolucao.PNG>]
+<source/pictures//instrucoes.jpeg, id=107, 1077.02374pt x 717.68124pt>
+File: source/pictures//instrucoes.jpeg Graphic file (type jpg)
+<use source/pictures//instrucoes.jpeg>
+Package pdftex.def Info: source/pictures//instrucoes.jpeg  used on input line 1
+22.
+(pdftex.def)             Requested size: 289.07999pt x 192.62668pt.
+ [7
+pdfTeX warning (ext4): destination with the same identifier (name{figure.0.6}) 
+has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.149 A
+        tela de pause também teve sua evolução no decorrer do tempo, pois...
+ <./source/pictures//instrucoes.jpeg>]
+<source/pictures//tela-pause.PNG, id=141, 950.80219pt x 339.51843pt>
+File: source/pictures//tela-pause.PNG Graphic file (type png)
+<use source/pictures//tela-pause.PNG>
+Package pdftex.def Info: source/pictures//tela-pause.PNG  used on input line 15
+6.
+(pdftex.def)             Requested size: 361.34999pt x 129.03387pt.
+ [8
+pdfTeX warning (ext4): destination with the same identifier (name{figure.0.7}) 
+has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.198  
+        \end{lstlisting} <./source/pictures//tela-pause.PNG>]
+<source/pictures//tela-vencedor.PNG, id=179, 985.43156pt x 325.215pt>
+File: source/pictures//tela-vencedor.PNG Graphic file (type png)
+<use source/pictures//tela-vencedor.PNG>
+Package pdftex.def Info: source/pictures//tela-vencedor.PNG  used on input line
+ 206.
+(pdftex.def)             Requested size: 361.34999pt x 119.25578pt.
+<source/pictures//jogo.jpeg, id=180, 1083.04625pt x 720.6925pt>
+File: source/pictures//jogo.jpeg Graphic file (type jpg)
+<use source/pictures//jogo.jpeg>
+Package pdftex.def Info: source/pictures//jogo.jpeg  used on input line 244.
+(pdftex.def)             Requested size: 216.81pt x 144.2679pt.
+ [9
+pdfTeX warning (ext4): destination with the same identifier (name{figure.0.8}) 
+has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.254 
+       <./source/pictures//tela-vencedor.PNG>] [10
+pdfTeX warning (ext4): destination with the same identifier (name{figure.0.9}) 
+has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.294  
+          } <./source/pictures//jogo.jpeg>]) (./sections/05-conclusion.tex
+[11])
 No file modelo-artigo.bbl.
-[7] (./modelo-artigo.aux)
+[12] (./modelo-artigo.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 30829 strings out of 478233
- 554657 string characters out of 5847836
- 1335668 words of memory out of 5000000
- 48363 multiletter control sequences out of 15000+600000
- 525154 words of font info for 121 fonts, out of 8000000 for 9000
+ 31189 strings out of 478233
+ 559932 string characters out of 5847836
+ 1521667 words of memory out of 5000000
+ 48520 multiletter control sequences out of 15000+600000
+ 525486 words of font info for 125 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  110i,12n,106p,1010b,2081s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {c:/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{c:/texlive/2022/tex
@@ -1354,10 +1404,10 @@ public/lm/lmr17.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr7.pfb>
 exmf-dist/fonts/type1/public/lm/lmtk10.pfb><c:/texlive/2022/texmf-dist/fonts/ty
 pe1/public/lm/lmtt9.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmtti
 10.pfb>
-Output written on modelo-artigo.pdf (7 pages, 572530 bytes).
+Output written on modelo-artigo.pdf (12 pages, 988161 bytes).
 PDF statistics:
- 200 PDF objects out of 1000 (max. 8388607)
- 162 compressed objects within 2 object streams
- 57 named destinations out of 1000 (max. 500000)
- 34942 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 454 PDF objects out of 1000 (max. 8388607)
+ 401 compressed objects within 5 object streams
+ 247 named destinations out of 1000 (max. 500000)
+ 34962 words of extra memory for PDF output out of 35830 (max. 10000000)
 
