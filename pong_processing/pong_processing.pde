@@ -143,8 +143,8 @@ void comunicacao() {
     }
   }
 
-  if (botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1) estado = true;
-  if (estado == true && (botao1.indexOf('1') == -1) && (botao2.indexOf('1') == -1)) {
+  if (botao1.indexOf('1') != -1 || botao2.indexOf('1') != -1) estado = true; // Identifica quando o botão é apertado
+  if (estado == true && (botao1.indexOf('1') == -1) && (botao2.indexOf('1') == -1)) { // Identifica quando o botão é solto
     click += 1;
     estado = false;
   }
